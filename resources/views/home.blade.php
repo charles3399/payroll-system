@@ -15,9 +15,10 @@
                     @endif
 
                     <div class="d-flex justify-content-start">
-                        <a name="" id="" class="btn btn-outline-primary rounded-pill mr-1" href="{{ route('employees.create') }}" role="button">Create new employee</a>
-                        <a name="" id="" class="btn btn-outline-info rounded-pill mr-1" href="{{ route('employees.index') }}" role="button">Show all employees</a>
-                        <a name="" id="" class="btn btn-outline-success rounded-pill" href="#" role="button">Find employees</a>
+                        <a class="btn btn-outline-primary rounded-pill mr-1" href="{{ route('employees.create') }}" role="button">Create new employee</a>
+                        <a class="btn btn-outline-info rounded-pill mr-1" href="{{ route('employees.index') }}" role="button">Employees List</a>
+                        <a class="btn btn-outline-success rounded-pill mr-1" href="{{ route('positions.create') }}" role="button">Create Position</a>
+                        <a class="btn btn-outline-success rounded-pill" href="{{ route('positions.index') }}" role="button">Position List</a>
                     </div>
                     
                     <hr>
@@ -39,7 +40,7 @@
                             <div class="card">
                                 <div class="card-body bg-primary text-white">
                                     <h4 class="card-title">Total Positions</h4>
-                                    <h3 class="card-text">5</h3>
+                                    <h3 class="card-text">{{ $positions->count() }}</h3>
                                 </div>
                             </div>
                         </div>

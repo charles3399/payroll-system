@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Positions;
+
 use Illuminate\Http\Request;
+
+use App\Http\Requests\CreatePositionsRequest;
+
+use App\Http\Requests\UpdatePositionsRequest;
 
 class PositionsController extends Controller
 {
+
+    public function __construct()
+    {
+       return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,7 @@ class PositionsController extends Controller
      */
     public function index()
     {
-        //
+        return view('positions.index')->with('positions', Positions::all());
     }
 
     /**
@@ -23,7 +34,7 @@ class PositionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('positions.create');
     }
 
     /**
@@ -32,9 +43,14 @@ class PositionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePositionsRequest $request)
     {
-        //
+        Positions::create([
+            'name' => $request->name,
+            'basic_pay' => $request->basic_pay,
+        ]);
+
+        return redirect('positions');
     }
 
     /**
@@ -43,9 +59,9 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Positions $position)
     {
-        //
+        return view('positions.show')->with('positions', $position);
     }
 
     /**
@@ -54,9 +70,9 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Positions $position)
     {
-        //
+        return view('positions.edit')->with('positions', $position);
     }
 
     /**
@@ -66,9 +82,14 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePositionsRequest $request, Positions $position)
     {
-        //
+        $position->update([
+            'name' => $request->name,
+            'basic_pay' => $request->basic_pay,
+        ]);
+
+        return redirect('positions');
     }
 
     /**
@@ -77,8 +98,10 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Positions $position)
     {
-        //
+        $position->delete();
+
+        return redirect('positions');
     }
 }

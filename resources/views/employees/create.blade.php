@@ -13,23 +13,23 @@
                     @method('POST')
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" name="fname" id="fname" class="form-control">
+                      <input type="text" name="fname" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" name="lname" id="lname" class="form-control">
+                        <input type="text" name="lname" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Gender</label>
-                        <input type="text" name="gender" id="gender" class="form-control">
+                        <input type="text" name="gender" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Address</label>
-                        <input type="text" name="address" id="address" class="form-control">
+                        <input type="text" name="address" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Position id</label>
-                        <input type="text" name="positions_id" id="positions_id" class="form-control">
+                        <input type="text" name="positions_id" class="form-control">
                     </div>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
