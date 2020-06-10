@@ -10,8 +10,9 @@ class Employees extends Model
     protected $fillable = [
         'fname',
         'lname',
-        'gemder',
-        'address'
+        'gender',
+        'address',
+        'positions_id'
     ];
 
     public function positions()

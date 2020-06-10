@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Employees;
+
 use Illuminate\Http\Request;
+
+use App\Http\Requests\CreateEmployeesRequest;
+
+use App\Http\Requests\UpdateEmployeesRequest;
 
 class EmployeesController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+        return view('employees.index')->with('employees', Employees::all());
     }
 
     /**
@@ -23,7 +34,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
@@ -32,9 +43,17 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateEmployeesRequest $request)
     {
-        //
+        Employees::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'positions_id' => $request->positions_id,
+        ]);
+
+        return redirect('home');
     }
 
     /**
@@ -43,9 +62,9 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employees $employee)
     {
-        //
+        return view('employees.show')->with('employee', $employee);
     }
 
     /**
@@ -54,9 +73,9 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employees $employee)
     {
-        //
+        return view('employees.edit')->with('employee', $employee);
     }
 
     /**
@@ -66,9 +85,17 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmployeesRequest $request, Employees $employee)
     {
-        //
+        $employee->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'positions_id' => $request->positions_id
+        ]);
+
+        return redirect('employees');
     }
 
     /**
@@ -77,8 +104,10 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employees $employee)
     {
-        //
+        $employee->delete();
+
+        return redirect('employees');
     }
 }

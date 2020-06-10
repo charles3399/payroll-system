@@ -14,9 +14,11 @@
                         </div>
                     @endif
 
-                    <a name="" id="" class="btn btn-outline-primary rounded-pill mr-1" href="#" role="button">Create new employee</a>
-                    <a name="" id="" class="btn btn-outline-info rounded-pill mr-1" href="#" role="button">Show all employees</a>
-                    <a name="" id="" class="btn btn-outline-success rounded-pill" href="#" role="button">Find employees</a>
+                    <div class="d-flex justify-content-start">
+                        <a name="" id="" class="btn btn-outline-primary rounded-pill mr-1" href="{{ route('employees.create') }}" role="button">Create new employee</a>
+                        <a name="" id="" class="btn btn-outline-info rounded-pill mr-1" href="{{ route('employees.index') }}" role="button">Show all employees</a>
+                        <a name="" id="" class="btn btn-outline-success rounded-pill" href="#" role="button">Find employees</a>
+                    </div>
                     
                     <hr>
 
@@ -25,7 +27,7 @@
                             <div class="card bg-info text-white">
                                 <div class="card-body">
                                     <h4 class="card-title">Number of Employees</h4>
-                                    <h3 class="card-text">10</h3>
+                                    <h3 class="card-text">{{ $employees->count() }}</h3>
                                 </div>
                             </div>
                             <div class="card">
