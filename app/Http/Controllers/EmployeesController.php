@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Employees;
 
+use App\Positions;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateEmployeesRequest;
@@ -24,7 +26,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        return view('employees.index')->with('employees', Employees::all());
+        return view('employees.index')->with('employees', Employees::all())->with('positions', Positions::all());
     }
 
     /**
@@ -62,9 +64,9 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employee)
+    public function show(Employees $employee, Positions $position)
     {
-        return view('employees.show')->with('employee', $employee);
+        return view('employees.show')->with('employee', $employee)->with('position', $position);
     }
 
     /**
@@ -75,7 +77,7 @@ class EmployeesController extends Controller
      */
     public function edit(Employees $employee)
     {
-        return view('employees.edit')->with('employee', $employee);
+        return view('employees.edit')->with('employee', $employee)->with('positions', Positions::all());
     }
 
     /**
