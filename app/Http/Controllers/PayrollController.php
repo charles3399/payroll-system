@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Payrolls;
 
+use App\Employees;
+
 use Illuminate\Http\Request;
 
 class PayrollController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,10 @@ class PayrollController extends Controller
      */
     public function index()
     {
-        //
+        return view('payrolls.index')
+        ->with('payrolls', Payrolls::all())
+        ->with('employees', Employees::all())
+        ->with('positions', Positions::all());
     }
 
     /**

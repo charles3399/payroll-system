@@ -26,7 +26,9 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        return view('employees.index')->with('employees', Employees::all())->with('positions', Positions::all());
+        return view('employees.index')
+        ->with('employees', Employees::all())
+        ->with('positions', Positions::all());
     }
 
     /**
@@ -36,7 +38,8 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employees.create')->with('positions', Positions::all());
+        return view('employees.create')
+        ->with('positions', Positions::all());
     }
 
     /**
@@ -66,7 +69,8 @@ class EmployeesController extends Controller
      */
     public function show(Employees $employee, Positions $position)
     {
-        return view('employees.show')->with('employee', $employee)->with('position', $position);
+        return view('employees.show')->with('employee', $employee)
+        ->with('position', $position);
     }
 
     /**
@@ -77,7 +81,8 @@ class EmployeesController extends Controller
      */
     public function edit(Employees $employee)
     {
-        return view('employees.edit')->with('employee', $employee)->with('positions', Positions::all());
+        return view('employees.edit')->with('employee', $employee)
+        ->with('positions', Positions::all());
     }
 
     /**
