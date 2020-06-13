@@ -8,7 +8,7 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                <table class="table table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>First Name</th>
