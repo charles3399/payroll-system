@@ -8,16 +8,16 @@
                 <a class="btn btn-primary" href="{{ route('employees.index') }}" role="button"><span>Back to employees</span></a>
             </div>
             <div class="card-body">
-                <label>First Name: </label>
-                <span>{{ $employee->fname }}</span><br>
-                <label>Last Name: </label>
-                <span>{{ $employee->lname }}</span><br>
-                <label>Gender: </label>
-                <span>{{ $employee->gender }}</span><br>
-                <label>Address: </label>
-                <span>{{ $employee->address }}</span><br>
-                <label>Positions ID: </label>
-                <span>{{ $employee->positions->name }}</span><br>
+                <label><h4>First Name: </h4></label>
+                <span style="font-size: 25px">{{ $employee->fname }}</span><br>
+                <label><h4>Last Name: </h4></label>
+                <span style="font-size: 25px">{{ $employee->lname }}</span><br>
+                <label><h4>Gender: </h4></label>
+                <span style="font-size: 25px">{{ $employee->gender }}</span><br>
+                <label><h4>Address: </h4></label>
+                <span style="font-size: 25px">{{ $employee->address }}</span><br>
+                <label><h4>Position: </h4></label>
+                <span style="font-size: 25px">{{ $employee->positions->name }}</span><br>
             </div>
         </div>
     </div>

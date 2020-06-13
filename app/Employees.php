@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employees extends Model
 {
-
     protected $fillable = [
         'fname',
         'lname',
@@ -18,5 +17,15 @@ class Employees extends Model
     public function positions()
     {
         return $this->belongsTo(Positions::class);
+    }
+
+    public function payrolls()
+    {
+        return $this->hasOne(Payrolls::class);
+    }
+
+    public function payments()
+    {
+        //return $this->hasMany(Payments::class);
     }
 }
