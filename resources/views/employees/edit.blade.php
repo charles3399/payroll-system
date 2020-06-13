@@ -33,10 +33,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Position id</label>
-                        <input type="text" name="positions_id" class="form-control" value="{{ $employee->positions_id}}">
+                        <label>Employee Position</label>
+                        <select name="positions_id" class="form-control">
+                            @foreach ($positions as $position)
+                                <option value="{{ $position->id }}">
+                                    {{ $position->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-
 
                     <button class="btn btn-outline-success btn-sm" type="submit">Update</button>
 

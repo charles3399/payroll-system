@@ -17,7 +17,7 @@
                 <label>Address: </label>
                 <span>{{ $employee->address }}</span><br>
                 <label>Positions ID: </label>
-                <span>{{ $employee->positions_id }}</span><br>
+                <span>{{ $employee->positions->name }}</span><br>
             </div>
         </div>
     </div>

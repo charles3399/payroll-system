@@ -27,7 +27,8 @@ class CreateEmployeesRequest extends FormRequest
             'fname' => 'required|max:250|min:2',
             'lname' => 'required|max:250|min:2',
             'gender' => 'required|max:100|min:4',
-            'address' => 'required|max:100|min:4'
+            'address' => 'required|max:100|min:4',
+            'positions_id' => 'required'
         ];
     }
 }

@@ -27,7 +27,7 @@
                                 <td>{{ $employee->lname }}</td>
                                 <td>{{ $employee->gender }}</td>
                                 <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->positions_id }}</td>
+                                <td>{{ $employee->positions->name }}</td>
                                 <td><a href="{{route('employees.edit', $employee->id)}}"><button class="btn btn-sm btn-outline-primary">Edit</button></a></td>
                                 <td>
                                     <form action="{{ route('employees.destroy', $employee->id) }}" method="post">

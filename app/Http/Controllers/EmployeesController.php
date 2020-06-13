@@ -36,7 +36,7 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        return view('employees.create')->with('positions', Positions::all());
     }
 
     /**
@@ -55,7 +55,7 @@ class EmployeesController extends Controller
             'positions_id' => $request->positions_id,
         ]);
 
-        return redirect('home');
+        return redirect('employees');
     }
 
     /**
