@@ -8,13 +8,12 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th>Position name</th>
                             <th>Basic pay (per hour)</th>
-                            <th></th>
-                            <th></th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     @foreach ($positions as $position)
@@ -22,12 +21,11 @@
                             <tr>
                                 <td><a href="{{route('positions.show', $position->id)}}">{{ $position->name }}</a></td>
                                 <td>₱{{ $position->basic_pay }}</td>
-                                <td><a href="{{route('positions.edit', $position->id)}}"><button class="btn btn-sm btn-outline-primary">Edit</button></a></td>
-                                <td>
+                                <td class="d-flex justify-content-between"><a href="{{route('positions.edit', $position->id)}}"><button class="btn btn-outline-primary">Edit</button></a>
                                     <form action="{{ route('positions.destroy', $position->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                        <button class="btn btn-outline-danger" type="submit">Delete</button>
                                     </form>
                                 </td>
 
@@ -38,4 +36,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 @endsection
