@@ -21,11 +21,11 @@
                             <tr>
                                 <td><a href="{{route('positions.show', $position->id)}}">{{ $position->name }}</a></td>
                                 <td>₱{{ $position->basic_pay }}</td>
-                                <td class="d-flex justify-content-between"><a href="{{route('positions.edit', $position->id)}}"><button class="btn btn-outline-primary">Edit</button></a>
+                                <td class="d-flex justify-content-between"><a href="{{route('positions.edit', $position->id)}}"><button class="btn btn-sm btn-outline-primary">Edit</button></a>
                                     <form action="{{ route('positions.destroy', $position->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-outline-danger" type="submit">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
                                     </form>
                                 </td>
 
