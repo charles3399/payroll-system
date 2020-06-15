@@ -6,6 +6,10 @@ use App\Payrolls;
 
 use App\Employees;
 
+use App\Http\Requests\CreatePayrollsRequest;
+
+use App\Http\Requests\UpdatePayrollsRequest;
+
 use Illuminate\Http\Request;
 
 class PayrollController extends Controller
@@ -34,7 +38,8 @@ class PayrollController extends Controller
      */
     public function create()
     {
-        //
+        return view('payrolls.create')
+        ->with('employees', Employees::all());
     }
 
     /**
@@ -43,9 +48,18 @@ class PayrollController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePayrollsRequest $request)
     {
-        //
+        Payrolls::create([
+            'days_work' => $request->days_work,
+            'overtime_hrs' => $request->overtime_hrs,
+            'late' => $request->late,
+            'absences' => $request->absences,
+            'bonuses' => $request->bonuses,
+            'employees_id' => $request->employees_id
+        ]);
+
+        return redirect('payrolls');
     }
 
     /**
@@ -54,9 +68,11 @@ class PayrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Payrolls $payroll, Employees $employee)
     {
-        //
+        return view('payrolls.show')
+        ->with('payrolls', $payroll)
+        ->with('employees', $employee);
     }
 
     /**

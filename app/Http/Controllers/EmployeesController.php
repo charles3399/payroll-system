@@ -6,6 +6,8 @@ use App\Employees;
 
 use App\Positions;
 
+use DataTables;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateEmployeesRequest;
@@ -24,8 +26,43 @@ class EmployeesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+
+            $data = Employees::all();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+
+                    return '
+                    
+                    <div class="d-flex justify-content-between"><a href="'.route('employees.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+
+                    <form action="'.route('employees.destroy', $data->id).'" method="post">
+                        <input type="hidden" name="_token" value="8asviTEaVZdwv4i19RdIELEwVfcQzCp0E1r2F3Q8">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                    </form></div>
+                    
+                    ';
+
+                })
+                ->rawColumns(['action'])
+                ->editColumn('created_at', function(Employees $employee){
+                    return $employee->created_at->diffForHumans();
+                })
+                ->editColumn('updated_at', function(Employees $employee){
+                    return $employee->updated_at->diffForHumans();
+                })
+                ->editColumn('positions_id', function(Employees $employee){
+                    return empty($employee->positions->name) ? $employee->positions_id : $employee->positions->name; 
+                    //this line solved the position name display issue (Name finally displayed instead of displaying id)
+                })
+                ->make(true);
+        }
+
         return view('employees.index')
         ->with('employees', Employees::all())
         ->with('positions', Positions::all());
@@ -69,7 +106,8 @@ class EmployeesController extends Controller
      */
     public function show(Employees $employee, Positions $position)
     {
-        return view('employees.show')->with('employee', $employee)
+        return view('employees.show')
+        ->with('employee', $employee)
         ->with('position', $position);
     }
 

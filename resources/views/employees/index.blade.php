@@ -8,38 +8,21 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                <table class="table" id="myTable">
+                <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Gender</th>
-                            <th>Address</th>
-                            <th>Position</th>
-                            <th></th>
-                            <th></th>
+                            <th><center>First Name</center></th>
+                            <th><center>Last Name</center></th>
+                            <th><center>Gender</center></th>
+                            <th><center>Address</center></th>
+                            <th><center>Position</center></th>
+                            <th><center>Created</center></th>
+                            <th><center>Updated</center></th>
+                            <th><center>Action</center></th>
                         </tr>
                     </thead>
-                    @foreach ($employees as $employee)
                         <tbody>
-                            <tr>
-                                <td><a href="{{route('employees.show', $employee->id)}}">{{ $employee->fname }}</a></td>
-                                <td>{{ $employee->lname }}</td>
-                                <td>{{ $employee->gender }}</td>
-                                <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->positions->name }}</td>
-                                <td><a href="{{route('employees.edit', $employee->id)}}"><button class="btn btn-sm btn-outline-primary">Edit</button></a></td>
-                                <td>
-                                    <form action="{{ route('employees.destroy', $employee->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                                    </form>
-                                </td>
-
-                            </tr>
                         </tbody>
-                    @endforeach
                 </table>
             </div>
         </div>
@@ -49,7 +32,21 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
+            $('#myTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('employees.index') }}",
+                columns: [
+                    {data: 'fname', name: 'fname'},
+                    {data: 'lname', name: 'lname'},
+                    {data: 'gender', name: 'gender'},
+                    {data: 'address', name: 'address'},
+                    {data: 'positions_id', name: 'positions_id'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+        });
     </script>
 @endsection

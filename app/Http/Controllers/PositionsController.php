@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Positions;
 
+use DataTables;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreatePositionsRequest;
@@ -22,9 +24,33 @@ class PositionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('positions.index')->with('positions', Positions::all());
+        if ($request->ajax()) {
+            $data = Positions::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+
+                    return '
+                    
+                    <div class="d-flex justify-content-center"><a href="'.route('positions.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+
+                    <form action="'.route('positions.destroy', $data->id).'" method="post">
+                        <input type="hidden" name="_token" value="8asviTEaVZdwv4i19RdIELEwVfcQzCp0E1r2F3Q8">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                    </form></div>
+                    
+                    ';
+                    
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('positions.index')
+        ->with('positions', Positions::all());
     }
 
     /**

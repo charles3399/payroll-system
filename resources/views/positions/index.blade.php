@@ -8,30 +8,16 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                <table class="table" id="myTable">
+                <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th>Position name</th>
-                            <th>Basic pay (per hour)</th>
-                            <th>Options</th>
+                            <th><center>Position name</center></th>
+                            <th><center>Basic pay</center></th>
+                            <th><center>Actions</center></th>
                         </tr>
                     </thead>
-                    @foreach ($positions as $position)
                         <tbody>
-                            <tr>
-                                <td><a href="{{route('positions.show', $position->id)}}">{{ $position->name }}</a></td>
-                                <td>₱{{ $position->basic_pay }}</td>
-                                <td class="d-flex justify-content-between"><a href="{{route('positions.edit', $position->id)}}"><button class="btn btn-sm btn-outline-primary">Edit</button></a>
-                                    <form action="{{ route('positions.destroy', $position->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                                    </form>
-                                </td>
-
-                            </tr>
                         </tbody>
-                    @endforeach
                 </table>
             </div>
         </div>
@@ -41,7 +27,16 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
+            $('#myTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('positions.index') }}",
+                columns: [
+                    {data: 'name', name: 'name'},
+                    {data: 'basic_pay', name: 'basic_pay'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+        });
     </script>
 @endsection
