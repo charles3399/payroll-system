@@ -19,8 +19,8 @@
                     <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.index') }}" role="button">Employees List</a>
                     <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.create') }}" role="button">Create Position</a>
                     <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.index') }}" role="button">Position List</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="#" role="button">Create a Payroll</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="#" role="button">Payroll List</a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.create') }}" role="button">Create a Payroll</a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.index') }}" role="button">Payroll List</a>
                     
                     
                     <hr>

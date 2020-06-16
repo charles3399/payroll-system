@@ -25,4 +25,6 @@ Route::resource('employees', 'EmployeesController');
 
 Route::resource('positions', 'PositionsController');
 
+Route::resource('payrolls', 'PayrollController');
+
 

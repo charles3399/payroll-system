@@ -21,7 +21,7 @@ class Employees extends Model
 
     public function payrolls()
     {
-        return $this->hasOne(Payrolls::class);
+        return $this->belongsTo(Payrolls::class);
     }
 
     public function payments()

@@ -34,12 +34,12 @@ class PayrollController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function($data){
 
-                return '<a href="#" class="btn btn-sm btn-outline-primary">Edit<a/>';
+                return '<a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary">Edit<a/>';
             })
             ->rawColumns(['action'])
-            ->editColumn('employees_id', function(Payrolls $payroll){
-                return empty($payroll->positions->name) ? $payroll->employees_id : $payroll->employees->lname;
-            })
+            // ->editColumn('employees_id', function(Payrolls $payroll){
+            //     return [$payroll->employees->fname.', '.$payroll->employees->lname];
+            // })
             ->make(true);
         }
 
@@ -101,7 +101,8 @@ class PayrollController extends Controller
     public function edit(Payrolls $payroll)
     {
         return view('payrolls.edit')
-        ->with('employees', $employee);
+        ->with('payrolls', $payroll)
+        ->with('employees', Employees::all());
     }
 
     /**

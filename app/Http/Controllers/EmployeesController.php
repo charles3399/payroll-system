@@ -57,8 +57,7 @@ class EmployeesController extends Controller
                     return $employee->updated_at->diffForHumans();
                 })
                 ->editColumn('positions_id', function(Employees $employee){
-                    return empty($employee->positions->name) ? $employee->positions_id : $employee->positions->name; 
-                    //this line solved the position name display issue (Name finally displayed instead of displaying id)
+                    return $employee->positions->name; 
                 })
                 ->make(true);
         }

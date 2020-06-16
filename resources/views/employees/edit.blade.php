@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Edit Employee</h3>
-                <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
+                <a class="btn btn-primary" href="{{ route('employees.index') }}" role="button"><span>Back to Employee List</span></a>
             </div>
             <div class="card-body">
                 <form action="{{ route('employees.update', $employee->id) }}"  method="post">
