@@ -119,7 +119,8 @@ class EmployeesController extends Controller
      */
     public function edit(Employees $employee)
     {
-        return view('employees.edit')->with('employee', $employee)
+        return view('employees.edit')
+        ->with('employee', $employee)
         ->with('positions', Positions::all());
     }
 
