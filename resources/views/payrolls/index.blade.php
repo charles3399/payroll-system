@@ -14,7 +14,7 @@
                 <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th><center>ID</center></th>
+                            <th><center>Payroll ID</center></th>
                             <th><center>Employee Name</center></th>
                             <th><center>Payroll Created</center></th>
                             <th><center>Payroll Updated</center></th>

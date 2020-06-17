@@ -5,7 +5,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>List of Employees</h3>
-                <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
+                <div>
+                    <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
+                    <a class="btn btn-success" href="{{ route('employees.create') }}" role="button"><span>Add New Employee</span></a>
+                </div>
+                
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped" id="myTable">
