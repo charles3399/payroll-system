@@ -49,7 +49,7 @@ class EmployeesController extends Controller
                     ';
 
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','fname'])
                 ->editColumn('created_at', function(Employees $employee){
                     return $employee->created_at->diffForHumans();
                 })
@@ -58,6 +58,9 @@ class EmployeesController extends Controller
                 })
                 ->editColumn('positions_id', function(Employees $employee){
                     return $employee->positions->name; 
+                })
+                ->editColumn('fname', function(Employees $employee){
+                    return '<a href="'.route('employees.show', $employee->id).'">'.($employee->fname).'</a>'; 
                 })
                 ->make(true);
         }

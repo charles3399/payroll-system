@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Edit Payroll for {{$payrolls->employees->lname}}, {{$payrolls->employees->fname}}</h3>
+                <h3>Edit Payroll</h3>
                 <a class="btn btn-primary" href="{{ route('payrolls.index') }}" role="button"><span>Back to Payroll List</span></a>
             </div>
             <div class="card-body">

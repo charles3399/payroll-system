@@ -15,12 +15,12 @@
                     @endif
 
                     
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.create') }}" role="button">Create new employee</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.index') }}" role="button">Employees List</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.create') }}" role="button">Create Position</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.index') }}" role="button">Position List</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.create') }}" role="button">Create a Payroll</a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.index') }}" role="button">Payroll List</a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.create') }}" role="button"><strong>Create new employee</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.index') }}" role="button"><strong>Employees List</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.create') }}" role="button"><strong>Create Position</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.index') }}" role="button"><strong>Position List</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.create') }}" role="button"><strong>Create a Payroll</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.index') }}" role="button"><strong>Payroll List</strong></a>
                     
                     
                     <hr>

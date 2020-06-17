@@ -45,7 +45,10 @@ class PositionsController extends Controller
                     ';
                     
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','name'])
+                ->editColumn('name', function(Positions $position){
+                    return '<a href="'.route('positions.show', $position->id).'">'.($position->name).'</a>'; 
+                })
                 ->make(true);
         }
 

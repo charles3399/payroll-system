@@ -25,6 +25,7 @@ class PayrollController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -36,10 +37,16 @@ class PayrollController extends Controller
 
                 return '<a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary">Edit<a/>';
             })
-            ->rawColumns(['action'])
-            // ->editColumn('employees_id', function(Payrolls $payroll){
-            //     return [$payroll->employees->fname.', '.$payroll->employees->lname];
-            // })
+            ->rawColumns(['action','employees_id'])
+            ->editColumn('created_at', function(Payrolls $payroll){
+                return $payroll->created_at->diffForHumans();
+            })
+            ->editColumn('updated_at', function(Payrolls $payroll){
+                return $payroll->updated_at->diffForHumans();
+            })
+            ->editColumn('employees_id', function(Payrolls $payroll){
+                return [$payroll->employees->lname. ', ' .$payroll->employees->fname];
+            })
             ->make(true);
         }
 
