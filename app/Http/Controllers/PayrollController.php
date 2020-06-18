@@ -37,7 +37,7 @@ class PayrollController extends Controller
 
                 return '<a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary">Edit<a/>';
             })
-            ->rawColumns(['action','employees_id'])
+            ->rawColumns(['action','employees_id','id'])
             ->editColumn('created_at', function(Payrolls $payroll){
                 return $payroll->created_at->diffForHumans();
             })
@@ -45,7 +45,10 @@ class PayrollController extends Controller
                 return $payroll->updated_at->diffForHumans();
             })
             ->editColumn('employees_id', function(Payrolls $payroll){
-                return [$payroll->employees->lname. ', ' .$payroll->employees->fname];
+                return $payroll->employees->pluck('lname')->first().', '.$payroll->employees->pluck('fname')->first();
+            })
+            ->editColumn('id', function(Payrolls $payroll){
+                return '<a href="'.route('payrolls.show', $payroll->id).'">'.($payroll->id).'</a>'; 
             })
             ->make(true);
         }
@@ -74,7 +77,7 @@ class PayrollController extends Controller
      */
     public function store(CreatePayrollsRequest $request)
     {
-        Payrolls::create([
+       $payroll = Payrolls::create([
             'days_work' => $request->days_work,
             'overtime_hrs' => $request->overtime_hrs,
             'late' => $request->late,
@@ -82,6 +85,8 @@ class PayrollController extends Controller
             'bonuses' => $request->bonuses,
             'employees_id' => $request->employees_id
         ]);
+
+        $payroll->employees()->attach($request->employees_id);
 
         return redirect('payrolls');
     }
@@ -129,6 +134,8 @@ class PayrollController extends Controller
             'bonuses' => $request->bonuses,
             'employees_id' => $request->employees_id
         ]);
+        
+        $payroll->employees()->sync($request->employees_id);
 
         return redirect('payrolls');
     }

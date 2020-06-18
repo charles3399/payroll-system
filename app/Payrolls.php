@@ -17,11 +17,6 @@ class Payrolls extends Model
 
     public function employees()
     {
-        return $this->hasMany(Employees::class);
-    }
-
-    public function payments()
-    {
-        //return $this->hasMany(Payments::class);
+        return $this->belongsToMany(Employees::class);
     }
 }

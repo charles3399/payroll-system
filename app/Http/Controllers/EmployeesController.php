@@ -6,6 +6,8 @@ use App\Employees;
 
 use App\Positions;
 
+//use App\Payrolls;
+
 use DataTables;
 
 use Illuminate\Http\Request;
