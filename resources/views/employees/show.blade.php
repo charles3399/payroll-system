@@ -20,5 +20,34 @@
                 <span style="font-size: 25px">{{ $employee->positions->name }}</span><br>
             </div>
         </div>
+
+        <div class="card mt-3">
+            <div class="card-header d-flex justify-content-between">
+                <h3>The Payroll</h3>
+            </div>
+            <div class="card-body">
+                <label><h4>Basic Pay: </h4></label>
+                <span style="font-size: 25px">
+                    @php
+                       $hourly = $employee->positions->basic_pay;
+                       $per_day = $hourly * 8;
+                       $per_month = $per_day * 26; //continuation
+                    @endphp
+                    {{$per_month}}
+                </span><br>
+
+                <label><h4>Days Worked: </h4></label>
+                <span style="font-size: 25px"></span><br>
+
+                <label><h4>Overtime Hours: </h4></label>
+                <span style="font-size: 25px"></span><br>
+
+                <label><h4>Lates (min): </h4></label>
+                <span style="font-size: 25px"></span><br>
+
+                <label><h4>Absences: </h4></label>
+                <span style="font-size: 25px"></span><br>
+            </div>
+        </div>
     </div>
 @endsection

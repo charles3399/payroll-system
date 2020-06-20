@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Positions;
 
+use App\Employees;
+
 use DataTables;
 
 use Illuminate\Http\Request;
@@ -88,9 +90,11 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Positions $position)
+    public function show(Positions $position, Employees $employee)
     {
-        return view('positions.show')->with('positions', $position);
+        return view('positions.show')
+        ->with('positions', $position)
+        ->with('employees', $employee);
     }
 
     /**
