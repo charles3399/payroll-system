@@ -14,7 +14,7 @@
                     
                     <div class="form-group">
                         <label>Position Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ $positions->name }}">
+                        <input type="text" name="position_name" class="form-control" value="{{ $positions->position_name }}">
                     </div>
 
                     <div class="form-group">

@@ -49,7 +49,7 @@ class PositionsController extends Controller
                 })
                 ->rawColumns(['action','name'])
                 ->editColumn('name', function(Positions $position){
-                    return '<a href="'.route('positions.show', $position->id).'">'.($position->name).'</a>'; 
+                    return '<a href="'.route('positions.show', $position->id).'">'.($position->position_name).'</a>'; 
                 })
                 ->make(true);
         }
@@ -77,7 +77,7 @@ class PositionsController extends Controller
     public function store(CreatePositionsRequest $request)
     {
         Positions::create([
-            'name' => $request->name,
+            'position_name' => $request->position_name,
             'basic_pay' => $request->basic_pay,
         ]);
 
@@ -118,7 +118,7 @@ class PositionsController extends Controller
     public function update(UpdatePositionsRequest $request, Positions $position)
     {
         $position->update([
-            'name' => $request->name,
+            'position_name' => $request->position_name,
             'basic_pay' => $request->basic_pay,
         ]);
 

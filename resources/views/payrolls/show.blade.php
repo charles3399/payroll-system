@@ -14,26 +14,8 @@
                 <label><h4>Employee Name:</h4></label>
                 <span style="font-size: 25px" class="ml-1"> {{ $payrolls->employees->pluck('lname')->first() }}, {{ $payrolls->employees->pluck('fname')->first() }}</span><br>
 
-                <label><h4>Days worked:</h4></label>
-                <span style="font-size: 25px" class="ml-1">{{ $payrolls->days_work }}</span><br>
-
-                <label><h4>Overtime hours:</h4></label>
-                <span style="font-size: 25px" class="ml-1">{{ $payrolls->overtime_hrs }}</span><br>
-
-                <label><h4>Lates (minutes):</h4></label>
-                <span style="font-size: 25px" class="ml-1">{{ $payrolls->late }}</span><br>
-
-                <label><h4>Number of Absences:</h4></label>
-                <span style="font-size: 25px" class="ml-1">{{ $payrolls->absences }}</span><br>
-
-                <label><h4>Bonuses:</h4></label>
-                <span style="font-size: 25px" class="ml-1">
-                    @if ($payrolls->bonuses == 0)
-                        No bonuses
-                    @else
-                    {{ $payrolls->bonuses }}
-                    @endif
-                </span><br>
+                <label><h4>Payroll Brief Description:</h4></label>
+                <span style="font-size: 25px" class="ml-1">{{ $payrolls->description }}</span><br>
             </div>
         </div>
     </div>

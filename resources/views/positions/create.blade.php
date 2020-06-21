@@ -13,7 +13,7 @@
                     @method('POST')
                     <div class="form-group">
                       <label>Position Name</label>
-                      <input type="text" name="name" class="form-control">
+                      <input type="text" name="position_name" class="form-control">
                     </div>
                     
                     <div class="form-group">

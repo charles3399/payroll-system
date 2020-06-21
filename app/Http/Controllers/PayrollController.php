@@ -78,11 +78,7 @@ class PayrollController extends Controller
     public function store(CreatePayrollsRequest $request)
     {
        $payroll = Payrolls::create([
-            'days_work' => $request->days_work,
-            'overtime_hrs' => $request->overtime_hrs,
-            'late' => $request->late,
-            'absences' => $request->absences,
-            'bonuses' => $request->bonuses,
+            'description' => $request->description,
             'employees_id' => $request->employees_id
         ]);
 
@@ -127,11 +123,7 @@ class PayrollController extends Controller
     public function update(UpdatePayrollsRequest $request, Payrolls $payroll)
     {
         $payroll->update([
-            'days_work' => $request->days_work,
-            'overtime_hrs' => $request->overtime_hrs,
-            'late' => $request->late,
-            'absences' => $request->absences,
-            'bonuses' => $request->bonuses,
+            'description' => $request->description,
             'employees_id' => $request->employees_id
         ]);
         

@@ -39,28 +39,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Days Worked</label>
-                        <input type="number" name="days_work" class="form-control" value="{{ old('days_work')}}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Overtime (hours)</label>
-                        <input type="number" name="overtime_hrs" class="form-control" value="{{ old('overtime_hrs') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of lates (Leave 0 if none)</label>
-                        <input type="number" name="late" class="form-control" value="{{ old('late') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of absences (Leave 0 if none)</label>
-                        <input type="number" name="absences" class="form-control" value="{{ old('absences') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Bonuses (Leave blank if not applicable)</label>
-                        <input type="number" name="bonuses" class="form-control" value="{{ old('bonuses') }}">
+                        <label>Description</label>
+                        <textarea name="description" cols="30" rows="30" class="form-control">{{ old('description') }}</textarea>
                     </div>
 
                     <button class="btn btn-lg btn-primary" type="submit">Create Payroll</button>

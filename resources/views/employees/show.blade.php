@@ -17,7 +17,23 @@
                 <label><h4>Address: </h4></label>
                 <span style="font-size: 25px">{{ $employee->address }}</span><br>
                 <label><h4>Position: </h4></label>
-                <span style="font-size: 25px">{{ $employee->positions->name }}</span><br>
+                <span style="font-size: 25px">{{ $employee->positions->position_name }}</span><br>
+                <label><h4>Days Worked: </h4></label>
+                <span style="font-size: 25px">{{ $employee->days_work }}</span><br>
+                <label><h4>Overtime (hours): </h4></label>
+                <span style="font-size: 25px">{{ $employee->overtime_hrs }}</span><br>
+                <label><h4>Lates (mins): </h4></label>
+                <span style="font-size: 25px">{{ $employee->late }}</span><br>
+                <label><h4>Days Absent: </h4></label>
+                <span style="font-size: 25px">{{ $employee->absences }}</span><br>
+                <label><h4>Bonuses: </h4></label>
+                <span style="font-size: 25px">
+                    @if ($employee->bonuses == 0)
+                        No Bonuses...
+                    @else
+                        {{ $employee->bonuses }}
+                    @endif
+                </span><br>
             </div>
         </div>
 
@@ -26,27 +42,7 @@
                 <h3>The Payroll</h3>
             </div>
             <div class="card-body">
-                <label><h4>Basic Pay: </h4></label>
-                <span style="font-size: 25px">
-                    @php
-                       $hourly = $employee->positions->basic_pay;
-                       $per_day = $hourly * 8;
-                       $per_month = $per_day * 26; //continuation
-                    @endphp
-                    {{$per_month}}
-                </span><br>
 
-                <label><h4>Days Worked: </h4></label>
-                <span style="font-size: 25px"></span><br>
-
-                <label><h4>Overtime Hours: </h4></label>
-                <span style="font-size: 25px"></span><br>
-
-                <label><h4>Lates (min): </h4></label>
-                <span style="font-size: 25px"></span><br>
-
-                <label><h4>Absences: </h4></label>
-                <span style="font-size: 25px"></span><br>
             </div>
         </div>
     </div>

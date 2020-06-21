@@ -35,7 +35,7 @@
                 serverSide: true,
                 ajax: "{{ route('positions.index') }}",
                 columns: [
-                    {data: 'name', name: 'name'},
+                    {data: 'position_name', name: 'position_name'},
                     {data: 'basic_pay', name: 'basic_pay'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
