@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeePayrollTable extends Migration
+class CreateEmployeesPayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEmployeePayrollTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_payroll', function (Blueprint $table) {
+        Schema::create('employees_payrolls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employees_id');
             $table->foreignId('payrolls_id');
@@ -28,6 +28,6 @@ class CreateEmployeePayrollTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_payroll');
+        Schema::dropIfExists('employees_payrolls');
     }
 }

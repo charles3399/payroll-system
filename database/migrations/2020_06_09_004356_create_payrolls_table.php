@@ -15,8 +15,12 @@ class CreatePayrollsTable extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
             $table->integer('employees_id');
+            $table->integer('days_work');
+            $table->float('overtime_hrs');
+            $table->integer('late');
+            $table->integer('absences');
+            $table->float('bonuses')->nullable();
             $table->timestamps();
         });
     }

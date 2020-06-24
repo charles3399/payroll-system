@@ -6,8 +6,8 @@
             <div class="card-header d-flex justify-content-between">
                 <h3>List of Employees</h3>
                 <div>
-                    <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
-                    <a class="btn btn-success" href="{{ route('employees.create') }}" role="button"><span>Add New Employee</span></a>
+                    <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
+                    <a class="btn btn-success" href="{{ route('employees.create') }}" role="button"><span><i class="fas fa-user-plus"></i> Add New Employee</span></a>
                 </div>
                 
             </div>

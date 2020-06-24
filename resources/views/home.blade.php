@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col xl-12">
             <div class="card">
+
                 <div class="card-header justify-content-between"><h3>Dashboard</h3></div>
 
                 <div class="card-body">
@@ -15,45 +16,46 @@
                     @endif
 
                     
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.create') }}" role="button"><strong>Create new employee</strong></a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.index') }}" role="button"><strong>Employees List</strong></a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.create') }}" role="button"><strong>Create Position</strong></a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.index') }}" role="button"><strong>Position List</strong></a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.create') }}" role="button"><strong>Create a Payroll</strong></a>
-                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.index') }}" role="button"><strong>Payroll List</strong></a>
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.create') }}" role="button"><strong><i class="fas fa-user-plus"></i> Create new employee</strong></a>
+
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('employees.index') }}" role="button"><strong><i class="fas fa-address-card"></i> Employees List</strong></a>
+
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.create') }}" role="button"><strong><i class="fas fa-chalkboard-teacher"></i> Create Position</strong></a>
+
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('positions.index') }}" role="button"><strong><i class="far fa-address-book"></i> Position List</strong></a>
+
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.create') }}" role="button"><strong><i class="fas fa-file-invoice-dollar"></i> Create a Payroll</strong></a>
+
+                    <a class="btn btn-outline-success rounded-pill mr-2 mt-2 mb-2" href="{{ route('payrolls.index') }}" role="button"><strong><i class="fas fa-clipboard-list"></i> Payroll List</strong></a>
                     
                     
                     <hr>
 
                     <div class="container">
+                        
                         <div class="card-columns">
                             <div class="card bg-info">
                                 <a href="{{ route('employees.index') }}" style="text-decoration: none"><div class="card-body text-white">
-                                    <h4 class="card-title">Number of Employees</h4>
+                                    <h4 class="card-title"><i class="fas fa-user-tie"></i> Number of Employees</h4>
                                     <h3 class="card-text">{{ $employees->count() }}</h3>
                                 </div></a>
                             </div>
                             <div class="card">
+                                <a href="{{ route('payrolls.index') }}" style="text-decoration: none">
                                 <div class="card-body bg-success text-white">
-                                    <h4 class="card-title">Total Gross Net Pay</h4>
-                                    <h3 class="card-text">₱ 50,000</h3>
-                                </div>
+                                    <h4 class="card-title"><i class="fas fa-money-check-alt"></i> Total Payrolls</h4>
+                                    <h3 class="card-text">{{ $payrolls->count() }}</h3>
+                                </div></a>
                             </div>
                             <div class="card bg-primary">
                                 <a href="{{ route('positions.index') }}" style="text-decoration: none"><div class="card-body text-white">
-                                    <h4 class="card-title">Total Positions</h4>
+                                    <h4 class="card-title"><i class="fas fa-briefcase"></i> Total Positions</h4>
                                     <h3 class="card-text">{{ $positions->count() }}</h3>
                                 </div></a>
                             </div>
+
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="card mt-5">
-                <div class="card-header"><h3>Another Dashboard</h3></div>
-                <div class="card-body">
-                    <h2>Useless piece of shit dashboard</h2>
                 </div>
             </div>
         </div>

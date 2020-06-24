@@ -8,8 +8,6 @@ use App\Employees;
 
 use App\Positions;
 
-use DB;
-
 use DataTables;
 
 use App\Http\Requests\CreatePayrollsRequest;
@@ -82,7 +80,11 @@ class PayrollController extends Controller
     public function store(CreatePayrollsRequest $request)
     {
        $payroll = Payrolls::create([
-            'description' => $request->description,
+            'days_work' => $request->days_work,
+            'overtime_hrs' => $request->overtime_hrs,
+            'late' => $request->late,
+            'absences' => $request->absences,
+            'bonuses' => $request->bonuses,
             'employees_id' => $request->employees_id
         ]);
 
@@ -97,12 +99,11 @@ class PayrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Payrolls $payroll, Employees $employee, Positions $position)
+    public function show(Payrolls $payroll, Employees $employee)
     {
         return view('payrolls.show')
         ->with('payrolls', $payroll)
-        ->with('employees', $employee)
-        ->with('positions', $position);
+        ->with('employees', $employee);
     }
 
     /**
@@ -128,7 +129,11 @@ class PayrollController extends Controller
     public function update(UpdatePayrollsRequest $request, Payrolls $payroll)
     {
         $payroll->update([
-            'description' => $request->description,
+            'days_work' => $request->days_work,
+            'overtime_hrs' => $request->overtime_hrs,
+            'late' => $request->late,
+            'absences' => $request->absences,
+            'bonuses' => $request->bonuses,
             'employees_id' => $request->employees_id
         ]);
         

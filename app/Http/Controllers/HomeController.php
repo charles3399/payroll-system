@@ -6,6 +6,8 @@ use App\Employees;
 
 use App\Positions;
 
+use App\Payrolls;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,6 +31,7 @@ class HomeController extends Controller
     {
         return view('home')
         ->with('employees', Employees::all())
-        ->with('positions', Positions::all());
+        ->with('positions', Positions::all())
+        ->with('payrolls', Payrolls::all());
     }
 }

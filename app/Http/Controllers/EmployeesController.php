@@ -59,7 +59,7 @@ class EmployeesController extends Controller
                     return $employee->updated_at->diffForHumans();
                 })
                 ->editColumn('positions_id', function(Employees $employee){
-                    return $employee->positions->position_name; 
+                    return $employee->positions->name; 
                 })
                 ->editColumn('fname', function(Employees $employee){
                     return '<a href="'.route('employees.show', $employee->id).'">'.($employee->fname).'</a>'; 
@@ -81,8 +81,7 @@ class EmployeesController extends Controller
     public function create()
     {
         return view('employees.create')
-        ->with('positions', Positions::all())
-        ->with('positions', Payrolls::all());
+        ->with('positions', Positions::all());
     }
 
     /**
@@ -98,12 +97,7 @@ class EmployeesController extends Controller
             'lname' => $request->lname,
             'gender' => $request->gender,
             'address' => $request->address,
-            'positions_id' => $request->positions_id,
-            'days_work' => $request->days_work,
-            'overtime_hrs' => $request->overtime_hrs,
-            'late' => $request->late,
-            'absences' => $request->absences,
-            'bonuses' => $request->bonuses
+            'positions_id' => $request->positions_id
         ]);
 
         return redirect('employees');
@@ -150,12 +144,7 @@ class EmployeesController extends Controller
             'lname' => $request->lname,
             'gender' => $request->gender,
             'address' => $request->address,
-            'positions_id' => $request->positions_id,
-            'days_work' => $request->days_work,
-            'overtime_hrs' => $request->overtime_hrs,
-            'late' => $request->late,
-            'absences' => $request->absences,
-            'bonuses' => $request->bonuses
+            'positions_id' => $request->positions_id
         ]);
 
         return redirect('employees');

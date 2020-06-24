@@ -28,10 +28,6 @@ class CreateEmployeesRequest extends FormRequest
             'lname' => 'required|max:250|min:2',
             'gender' => 'required|max:100|min:4',
             'address' => 'required|max:100|min:4',
-            'days_work' => 'required|max:100|min:4',
-            'overtime_hrs' => 'required|max:100|min:4',
-            'late' => 'required|max:100|min:4',
-            'absences' => 'required|max:100|min:4',
             'positions_id' => 'required'
         ];
     }

@@ -24,7 +24,10 @@ class UpdatePayrollsRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required',
+            'days_work' => 'required',
+            'overtime_hrs' => 'required',
+            'late' => 'required',
+            'absences' => 'required',
             'employees_id' => 'required'
         ];
     }

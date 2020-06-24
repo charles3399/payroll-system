@@ -19,11 +19,6 @@ class CreateEmployeesTable extends Migration
             $table->string('lname');
             $table->string('gender');
             $table->text('address');
-            $table->integer('days_work');
-            $table->float('overtime_hrs');
-            $table->integer('late');
-            $table->integer('absences');
-            $table->float('bonuses')->nullable();
             $table->integer('positions_id');
             $table->timestamps();
         });

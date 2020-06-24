@@ -24,7 +24,7 @@ class CreatePositionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'position_name' => 'required',
+            'name' => 'required',
             'basic_pay' => 'required'
         ];
     }

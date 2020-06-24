@@ -6,8 +6,9 @@
             <div class="card-header d-flex justify-content-between">
                 <h3>Payroll List</h3>
                 <div>
-                <a class="btn btn-success mr-1" href="{{ route('payrolls.create') }}" role="button"><span>Create New Payroll</span></a>
-                <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span>Back to dashboard</span></a>
+                <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
+                <a class="btn btn-success mr-1" href="{{ route('payrolls.create') }}" role="button"><span><i class="fas fa-file-invoice-dollar"></i> Create New Payroll</span></a>
+                
                 </div>
             </div>
             <div class="card-body">

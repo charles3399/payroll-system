@@ -15,12 +15,4 @@ class Positions extends Model
     {
         return $this->hasMany(Employees::class);
     }
-
-    public function payrolls()
-    {
-        return $this->hasManyThrough(
-            Payrolls::class,
-            Employees::class
-        );
-    }
 }
