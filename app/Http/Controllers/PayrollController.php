@@ -6,6 +6,10 @@ use App\Payrolls;
 
 use App\Employees;
 
+use App\Positions;
+
+use DB;
+
 use DataTables;
 
 use App\Http\Requests\CreatePayrollsRequest;
@@ -97,11 +101,12 @@ class PayrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Payrolls $payroll, Employees $employee)
+    public function show(Payrolls $payroll, Employees $employee, Positions $position)
     {
         return view('payrolls.show')
         ->with('payrolls', $payroll)
-        ->with('employees', $employee);
+        ->with('employees', $employee)
+        ->with('positions', $position);
     }
 
     /**

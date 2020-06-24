@@ -18,6 +18,8 @@
                 <span style="font-size: 25px">{{ $employee->address }}</span><br>
                 <label><h4>Position: </h4></label>
                 <span style="font-size: 25px">{{ $employee->positions->name }}</span><br>
+                <label><h4>Basic Pay: </h4></label>
+                <span style="font-size: 25px">{{ $employee->positions->basic_pay }} (per hour)</span><br>
             </div>
         </div>
     </div>
