@@ -15,7 +15,7 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('position_name');
             $table->float('basic_pay');
             $table->timestamps();
         });

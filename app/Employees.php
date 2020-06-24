@@ -11,7 +11,8 @@ class Employees extends Model
         'lname',
         'gender',
         'address',
-        'positions_id'
+        'positions_id',
+        'payrolls_id'
     ];
 
     public function positions()

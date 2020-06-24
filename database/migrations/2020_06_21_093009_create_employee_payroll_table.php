@@ -13,7 +13,7 @@ class CreateEmployeePayrollTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees_payrolls', function (Blueprint $table) {
+        Schema::create('employee_payroll', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employees_id');
             $table->foreignId('payrolls_id');

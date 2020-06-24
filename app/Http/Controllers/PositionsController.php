@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Positions;
 
+use App\Employees;
+
 use DataTables;
 
 use Illuminate\Http\Request;
@@ -47,7 +49,7 @@ class PositionsController extends Controller
                 })
                 ->rawColumns(['action','name'])
                 ->editColumn('name', function(Positions $position){
-                    return '<a href="'.route('positions.show', $position->id).'">'.($position->name).'</a>'; 
+                    return '<a href="'.route('positions.show', $position->id).'">'.($position->position_name).'</a>'; 
                 })
                 ->make(true);
         }
@@ -75,7 +77,7 @@ class PositionsController extends Controller
     public function store(CreatePositionsRequest $request)
     {
         Positions::create([
-            'name' => $request->name,
+            'position_name' => $request->position_name,
             'basic_pay' => $request->basic_pay,
         ]);
 
@@ -88,9 +90,11 @@ class PositionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Positions $position)
+    public function show(Positions $position, Employees $employee)
     {
-        return view('positions.show')->with('positions', $position);
+        return view('positions.show')
+        ->with('positions', $position)
+        ->with('employees', $employee);
     }
 
     /**
@@ -114,7 +118,7 @@ class PositionsController extends Controller
     public function update(UpdatePositionsRequest $request, Positions $position)
     {
         $position->update([
-            'name' => $request->name,
+            'position_name' => $request->position_name,
             'basic_pay' => $request->basic_pay,
         ]);
 

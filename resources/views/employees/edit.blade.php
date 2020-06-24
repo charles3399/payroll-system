@@ -51,6 +51,31 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label>Days Worked</label>
+                        <input type="number" name="days_work" class="form-control" value="{{ $employee->days_work }}{{ old('days_work') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Overtime Hours</label>
+                        <input type="number" name="overtime_hrs" class="form-control" value="{{ $employee->overtime_hrs }}{{ old('overtime_hrs') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Late</label>
+                        <input type="number" name="late" class="form-control" value="{{ $employee->late }}{{ old('late') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Absences</label>
+                        <input type="number" name="absences" class="form-control" value="{{ $employee->absences }}{{ old('absences') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bonuses - Leave blank if none</label>
+                        <input type="number" name="bonuses" class="form-control" value="{{ $employee->bonuses }}{{ old('bonuses') }}">
+                    </div>
+
                     <button class="btn btn-outline-success btn-sm" type="submit">Update</button>
 
                 </form>

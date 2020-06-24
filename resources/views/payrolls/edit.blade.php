@@ -47,28 +47,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Days Worked</label>
-                        <input type="number" name="days_work" class="form-control" value="{{ $payrolls->days_work }}{{ old('days_work')}}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Overtime (hours)</label>
-                        <input type="number" name="overtime_hrs" class="form-control" value="{{ $payrolls->overtime_hrs }}{{ old('overtime_hrs') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of lates (Leave 0 if none)</label>
-                        <input type="number" name="late" class="form-control" value="{{ $payrolls->late }}{{ old('late') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Number of absences (Leave 0 if none)</label>
-                        <input type="number" name="absences" class="form-control" value="{{ $payrolls->absences }}{{ old('late') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Bonuses (Leave blank if not applicable)</label>
-                        <input type="number" name="bonuses" class="form-control" value="{{ $payrolls->bonuses }}{{ old('bonuses') }}">
+                        <label>Description</label>
+                        <textarea name="description" cols="30" rows="10" class="form-cotnrol">
+                            {{$payrolls->description}}
+                        </textarea>
                     </div>
 
                     <button class="btn btn-outline-success btn-sm" type="submit">Update Payroll</button>

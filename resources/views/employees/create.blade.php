@@ -33,14 +33,39 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Employee Position</label>
+                        <label>Select Position</label>
                         <select class="form-control" name="positions_id">
                             @foreach ($positions as $position)
                                 <option value="{{ $position->id }}">
-                                    {{ $position->name }}
+                                    {{ $position->position_name }}
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Days Worked</label>
+                        <input type="number" name="days_work" class="form-control" value="{{ old('days_work') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Overtime (hrs) - Leave 0 if none</label>
+                        <input type="number" name="overtime_hrs" class="form-control" value="{{ old('overtime_hrs') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Late (mins) - Leave 0 if none</label>
+                        <input type="number" name="late" class="form-control" value="{{ old('late') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Days Absent - Leave 0 if none</label>
+                        <input type="number" name="absences" class="form-control" value="{{ old('absences') }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bonuses - Leave blank if none</label>
+                        <input type="number" name="bonuses" class="form-control" value="{{ old('bonuses') }}">
                     </div>
 
                     <button class="btn btn-primary" type="submit">Submit</button>

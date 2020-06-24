@@ -6,7 +6,7 @@ use App\Employees;
 
 use App\Positions;
 
-//use App\Payrolls;
+use App\Payrolls;
 
 use DataTables;
 
@@ -59,7 +59,7 @@ class EmployeesController extends Controller
                     return $employee->updated_at->diffForHumans();
                 })
                 ->editColumn('positions_id', function(Employees $employee){
-                    return $employee->positions->name; 
+                    return $employee->positions->position_name; 
                 })
                 ->editColumn('fname', function(Employees $employee){
                     return '<a href="'.route('employees.show', $employee->id).'">'.($employee->fname).'</a>'; 
@@ -69,7 +69,8 @@ class EmployeesController extends Controller
 
         return view('employees.index')
         ->with('employees', Employees::all())
-        ->with('positions', Positions::all());
+        ->with('positions', Positions::all())
+        ->with('payrolls', Payrolls::all());
     }
 
     /**
@@ -80,7 +81,8 @@ class EmployeesController extends Controller
     public function create()
     {
         return view('employees.create')
-        ->with('positions', Positions::all());
+        ->with('positions', Positions::all())
+        ->with('positions', Payrolls::all());
     }
 
     /**
@@ -97,6 +99,11 @@ class EmployeesController extends Controller
             'gender' => $request->gender,
             'address' => $request->address,
             'positions_id' => $request->positions_id,
+            'days_work' => $request->days_work,
+            'overtime_hrs' => $request->overtime_hrs,
+            'late' => $request->late,
+            'absences' => $request->absences,
+            'bonuses' => $request->bonuses
         ]);
 
         return redirect('employees');
@@ -108,11 +115,12 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employee, Positions $position)
+    public function show(Employees $employee, Positions $position, Payrolls $payroll)
     {
         return view('employees.show')
         ->with('employee', $employee)
-        ->with('position', $position);
+        ->with('position', $position)
+        ->with('payroll', $payroll);
     }
 
     /**
@@ -142,7 +150,12 @@ class EmployeesController extends Controller
             'lname' => $request->lname,
             'gender' => $request->gender,
             'address' => $request->address,
-            'positions_id' => $request->positions_id
+            'positions_id' => $request->positions_id,
+            'days_work' => $request->days_work,
+            'overtime_hrs' => $request->overtime_hrs,
+            'late' => $request->late,
+            'absences' => $request->absences,
+            'bonuses' => $request->bonuses
         ]);
 
         return redirect('employees');
