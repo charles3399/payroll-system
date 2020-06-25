@@ -99,8 +99,10 @@ class PayrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Payrolls $payroll, Employees $employee)
+    public function show(Employees $employee)
     {
+        $payroll = Payrolls::with('positions')->get();
+
         return view('payrolls.show')
         ->with('payrolls', $payroll)
         ->with('employees', $employee);

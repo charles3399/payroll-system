@@ -22,7 +22,7 @@
                 </span><br>
 
                 <label><h4>Basic Pay: </h4></label>
-                <span style="font-size: 25px">100</span><br>
+                <span style="font-size: 25px">{{$payrolls->positions->pluck('basic_pay')->first()}}</span><br>
 
                 <label><h4>Days Worked: </h4></label>
                 <span style="font-size: 25px">{{ $payrolls->days_work }}</span><br>
