@@ -8,6 +8,8 @@ use App\Employees;
 
 use App\Positions;
 
+use DB;
+
 use DataTables;
 
 use App\Http\Requests\CreatePayrollsRequest;
@@ -99,9 +101,9 @@ class PayrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employee)
+    public function show(Employees $employee, Payrolls $payroll)
     {
-        $payroll = Payrolls::with('positions')->get();
+        //$payroll = DB::select('select payrolls.*, positions.*, employees.* from payrolls inner join employees on payrolls.employees_id = employees.id inner join positions on employees.positions_id = positions.id');
 
         return view('payrolls.show')
         ->with('payrolls', $payroll)
