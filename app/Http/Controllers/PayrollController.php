@@ -92,6 +92,8 @@ class PayrollController extends Controller
 
         $payroll->employees()->attach($request->employees_id);
 
+        session()->flash('success', 'Payroll created successfully!');
+
         return redirect('payrolls');
     }
 
@@ -142,6 +144,8 @@ class PayrollController extends Controller
         ]);
         
         $payroll->employees()->sync($request->employees_id);
+
+        session()->flash('success', 'Payroll updated successfully!');
 
         return redirect('payrolls');
     }

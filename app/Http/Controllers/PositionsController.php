@@ -39,7 +39,7 @@ class PositionsController extends Controller
                     <div class="d-flex justify-content-center"><a href="'.route('positions.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
                     <form action="'.route('positions.destroy', $data->id).'" method="post">
-                        <input type="hidden" name="_token" value="8asviTEaVZdwv4i19RdIELEwVfcQzCp0E1r2F3Q8">
+                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
                     </form></div>
@@ -80,6 +80,8 @@ class PositionsController extends Controller
             'name' => $request->name,
             'basic_pay' => $request->basic_pay,
         ]);
+
+        session()->flash('success', 'Position created successfully!');
 
         return redirect('positions');
     }
@@ -122,6 +124,8 @@ class PositionsController extends Controller
             'basic_pay' => $request->basic_pay,
         ]);
 
+        session()->flash('success', 'Position updated successfully!');
+
         return redirect('positions');
     }
 
@@ -134,6 +138,8 @@ class PositionsController extends Controller
     public function destroy(Positions $position)
     {
         $position->delete();
+
+        session()->flash('success', 'Position deleted!');
 
         return redirect('positions');
     }

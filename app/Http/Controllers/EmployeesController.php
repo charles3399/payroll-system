@@ -43,7 +43,7 @@ class EmployeesController extends Controller
                     <div class="d-flex justify-content-between"><a href="'.route('employees.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
                     <form action="'.route('employees.destroy', $data->id).'" method="post">
-                        <input type="hidden" name="_token" value="8asviTEaVZdwv4i19RdIELEwVfcQzCp0E1r2F3Q8">
+                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
                     </form></div>
@@ -100,6 +100,8 @@ class EmployeesController extends Controller
             'positions_id' => $request->positions_id
         ]);
 
+        session()->flash('success', 'Employee created successfully!');
+
         return redirect('employees');
     }
 
@@ -147,6 +149,8 @@ class EmployeesController extends Controller
             'positions_id' => $request->positions_id
         ]);
 
+        session()->flash('success', 'Employee updated successfully!');
+
         return redirect('employees');
     }
 
@@ -159,6 +163,8 @@ class EmployeesController extends Controller
     public function destroy(Employees $employee)
     {
         $employee->delete();
+
+        session()->flash('success', 'Employee has been deleted!');
 
         return redirect('employees');
     }
