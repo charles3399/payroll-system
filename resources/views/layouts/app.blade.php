@@ -17,7 +17,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+    
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
@@ -99,7 +100,10 @@
 
         @if(Session::has('success'))
             toastr.success("{{ Session::get('success') }}")
+        @elseif(Session::has('delete'))
+            toastr.warning("{{ Session::get('delete') }}")
         @endif
+
     </script>
 
 </body>

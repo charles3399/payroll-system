@@ -164,7 +164,7 @@ class EmployeesController extends Controller
     {
         $employee->delete();
 
-        session()->flash('success', 'Employee has been deleted!');
+        session()->flash('delete', 'Employee has been deleted!');
 
         return redirect('employees');
     }
