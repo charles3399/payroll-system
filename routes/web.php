@@ -21,10 +21,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('employees', 'EmployeesController');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('employees', 'EmployeesController');
 
-Route::resource('positions', 'PositionsController');
+    Route::resource('positions', 'PositionsController');
 
-Route::resource('payrolls', 'PayrollController');
+    Route::resource('payrolls', 'PayrollController');
+
+    Route::get('users/profile-settings','UsersController@profile')->name('users.profile');
+
+    Route::get('/change-password', 'Auth\ChangePasswordController@index')->name('users.change-password');
+
+    Route::post('/change-password', 'Auth\ChangePasswordController@changepassword')->name('users.password-update');
+});
 
 
