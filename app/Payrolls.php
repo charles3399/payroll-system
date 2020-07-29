@@ -19,9 +19,4 @@ class Payrolls extends Model
     {
         return $this->belongsToMany(Employees::class);
     }
-
-    public function positions()
-    {
-        return $this->hasManyThrough(Positions::class, Employees::class);
-    }
 }

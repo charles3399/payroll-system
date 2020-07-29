@@ -15,14 +15,16 @@
                 <span style="font-size: 25px">
                     {{ $payrolls->employees->pluck('lname')->first() }}, {{ $payrolls->employees->pluck('fname')->first() }}
                 </span><br>
-                
+
                 <label><h4>Position: </h4></label>
                 <span style="font-size: 25px">
-                    {{ $payrolls->employees->pluck('positions_id')->first() }}
+                    {{ $position_name->pluck('name')->first() }}
                 </span><br>
 
                 <label><h4>Basic Pay: </h4></label>
-                <span style="font-size: 25px">{{--{{ $payrolls->positions->pluck('basic_pay')->first() }}--}}</span><br>
+                <span style="font-size: 25px">
+                    {{ $basic_pay->pluck('basic_pay')->first() }}
+                </span><br>
 
                 <label><h4>Days Worked: </h4></label>
                 <span style="font-size: 25px">{{ $payrolls->days_work }}</span><br>

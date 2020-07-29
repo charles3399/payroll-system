@@ -105,13 +105,32 @@ class PayrollController extends Controller
      */
     public function show(Employees $employee, Payrolls $payroll)
     {
-        //$payroll = DB::select('select payrolls.*, positions.*, employees.* from payrolls inner join employees on payrolls.employees_id = employees.id inner join positions on employees.positions_id = positions.id');
+        // select payrolls.employees_id, employees.lname, positions.name, positions.basic_pay
+        // from payrolls
+        // inner join employees on employees.eid = payrolls.employees_id
+        // inner join positions on positions.pid = employees.positions_id;
+
+        $basic_pay = DB::table('payrolls')
+        ->join('employees', 'employees.id', '=', 'payrolls.employees_id')
+        ->join('positions', 'positions.id', '=', 'employees.positions_id')
+        ->select('positions.basic_pay')
+        ->where('payrolls.employees_id', '=', $payroll->employees_id)
+        ->get();
+
+        $position_name = DB::table('payrolls')
+        ->join('employees', 'employees.id', '=', 'payrolls.employees_id')
+        ->join('positions', 'positions.id', '=', 'employees.positions_id')
+        ->select('positions.name')
+        ->where('payrolls.employees_id', '=', $payroll->employees_id)
+        ->get();
 
         return view('payrolls.show')
         ->with('payrolls', $payroll)
+        ->with('basic_pay', $basic_pay)
+        ->with('position_name', $position_name)
         ->with('employees', $employee);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
