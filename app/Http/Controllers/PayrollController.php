@@ -43,10 +43,10 @@ class PayrollController extends Controller
             })
             ->rawColumns(['action','employees_id','id'])
             ->editColumn('created_at', function(Payrolls $payroll){
-                return $payroll->created_at->diffForHumans();
+                return date_format($payroll->created_at, 'Y/m/d h:i a');
             })
             ->editColumn('updated_at', function(Payrolls $payroll){
-                return $payroll->updated_at->diffForHumans();
+                return date_format($payroll->updated_at, 'Y/m/d h:i a');
             })
             ->editColumn('employees_id', function(Payrolls $payroll){
                 return $payroll->employees->pluck('lname')->first().', '.$payroll->employees->pluck('fname')->first();

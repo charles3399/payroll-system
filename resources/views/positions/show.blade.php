@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h3>Position Information</h3>
-                <a class="btn btn-primary" href="{{ route('positions.index') }}" role="button"><span>Back to List of Positions</span></a>
+                <a class="btn btn-primary" href="{{ route('positions.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to List of Positions</span></a>
             </div>
             <div class="card-body">
                 <label><h4>Position Name: </h4></label>

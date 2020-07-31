@@ -53,10 +53,10 @@ class EmployeesController extends Controller
                 })
                 ->rawColumns(['action','fname'])
                 ->editColumn('created_at', function(Employees $employee){
-                    return $employee->created_at->diffForHumans();
+                    return date_format($employee->created_at, 'Y/m/d h:i a');
                 })
                 ->editColumn('updated_at', function(Employees $employee){
-                    return $employee->updated_at->diffForHumans();
+                    return date_format($employee->updated_at, 'Y/m/d h:i a');
                 })
                 ->editColumn('positions_id', function(Employees $employee){
                     return $employee->positions->name; 

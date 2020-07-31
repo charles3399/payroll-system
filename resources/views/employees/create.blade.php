@@ -43,7 +43,10 @@
                         </select>
                     </div>
 
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-success" type="submit">Submit</button>
+
+                    <a class="btn btn-info" href="{{ route('home') }}" role="button"><span>Cancel</span></a>
+                    
                 </form>
             </div>
         </div>
