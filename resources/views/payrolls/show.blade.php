@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="card">
+        <div class="card shadow">
             <div class="card-header d-flex justify-content-between">
                 <h4>Payroll Information for: <strong>{{ $payrolls->employees->pluck('lname')->first() }}, {{ $payrolls->employees->pluck('fname')->first() }}</strong> ({{date_format($payrolls->created_at, 'Y/m/d h:i a')}})</h4>
                 <a class="btn btn-primary" href="{{ route('payrolls.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to Payroll List</span></a>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="card mt-3 mb-3">
+        <div class="card shadow mt-3 mb-3">
 
             <div class="card-header">
                 <h4>Payroll</h4>
