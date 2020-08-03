@@ -111,16 +111,16 @@ class PayrollController extends Controller
         // inner join positions on positions.pid = employees.positions_id;
 
         $basic_pay = DB::table('payrolls')
+        ->select('positions.basic_pay')
         ->join('employees', 'employees.id', '=', 'payrolls.employees_id')
         ->join('positions', 'positions.id', '=', 'employees.positions_id')
-        ->select('positions.basic_pay')
         ->where('payrolls.employees_id', '=', $payroll->employees_id)
         ->get();
 
         $position_name = DB::table('payrolls')
+        ->select('positions.name')
         ->join('employees', 'employees.id', '=', 'payrolls.employees_id')
         ->join('positions', 'positions.id', '=', 'employees.positions_id')
-        ->select('positions.name')
         ->where('payrolls.employees_id', '=', $payroll->employees_id)
         ->get();
 
