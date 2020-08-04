@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',$employee->fname)
+
 @section('content')
     <div class="container">
         <div class="card">

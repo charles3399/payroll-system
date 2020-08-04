@@ -58,8 +58,8 @@ class PayrollController extends Controller
         }
 
         return view('payrolls.index')
-        ->with('payrolls', Payrolls::all())
-        ->with('employees', Employees::all());
+        ->with('payrolls', Payrolls::all());
+        //->with('employees', Employees::all());
     }
 
     /**

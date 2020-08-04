@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',$users->name)
+
 @section('content')
 <div class="container">
     <div class="card shadow">

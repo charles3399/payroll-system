@@ -51,6 +51,9 @@ class PositionsController extends Controller
                 ->editColumn('name', function(Positions $position){
                     return '<a href="'.route('positions.show', $position->id).'">'.($position->name).'</a>'; 
                 })
+                ->editColumn('basic_pay', function(Positions $position){
+                    return '₱'.($position->basic_pay).'';
+                })
                 ->make(true);
         }
 
