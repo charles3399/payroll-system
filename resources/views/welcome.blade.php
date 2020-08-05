@@ -114,21 +114,21 @@
 
                     <div class="col">
                         <h2>
-                            <center><a href="https://github.com/charles3399/payroll-system" target="__blank"><i class="fa fa-github-alt" aria-hidden="true" style="color: black"></i></a></center>
+                            <center><a href="https://github.com/charles3399/payroll-system" target="__blank" rel="noopener"><i class="fa fa-github-alt" aria-hidden="true" style="color: black"></i></a></center>
                         </h2>
                         
                     </div>
 
                     <div class="col">
                         <h2>
-                        <center><a href="https://ph.linkedin.com/in/charles-edison-bernaldez-3549791b2" target="__blank"><i class="fa fa-linkedin-square" aria-hidden="true" style="color: blue"></i></a></center>
+                        <center><a href="https://ph.linkedin.com/in/charles-edison-bernaldez-3549791b2" target="__blank" rel="noopener"><i class="fa fa-linkedin-square" aria-hidden="true" style="color: blue"></i></a></center>
                         </h2>
                         
                     </div>
 
                     <div class="col">
                         <h2>
-                        <center><a href="https://www.instagram.com/say_bernaldez/" target="__blank"><i class="fa fa-instagram" aria-hidden="true" style="color: rgb(235, 63, 91)"></i></a></center>
+                        <center><a href="https://www.instagram.com/say_bernaldez/" target="__blank" rel="noopener"><i class="fa fa-instagram" aria-hidden="true" style="color: rgb(235, 63, 91)"></i></a></center>
                         </h2>
                     </div>
 
@@ -148,7 +148,7 @@
                     <div class="col">
                         <h2>Meet the developer</h2>
                         <p>
-                            Hi, I'm Charles. I'm the developer of this web application, you can follow me on <a href="https://github.com/charles3399/payroll-system">Github</a>, <a href="https://ph.linkedin.com/in/charles-edison-bernaldez-3549791b2">LinkedIn</a> or follow my <a href="https://www.instagram.com/say_bernaldez/">Instagram</a> page.
+                            Hi, I'm Charles. I'm the developer of this web application, you can follow me on <a href="https://github.com/charles3399/payroll-system" rel="noopener">Github</a>, <a href="https://ph.linkedin.com/in/charles-edison-bernaldez-3549791b2" rel="noopener">LinkedIn</a> or follow my <a href="https://www.instagram.com/say_bernaldez/" rel="noopener">Instagram</a> page.
                         </p>
                         <p>
                             I've been passionate about Web Development, and I've been developing various web apps for almost a year now. If you want to contact me, feel free to message me on my social media links or send me an email through here: bernaldez.corporate@gmail.com
