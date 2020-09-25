@@ -57,27 +57,6 @@
                 <h4>Payroll</h4>
             </div>
 
-            @php
-                //Earnings
-                $hourly = $basic_pay->pluck('basic_pay')->first();
-                $monthly = $hourly * 8 * $payrolls->days_work;
-                $overtime = (($hourly * 0.5) + $hourly ) * $payrolls->overtime_hrs;
-                $gross_income = $monthly + $overtime;
-                //Deductions
-                $per_day = $hourly * 8;
-                $late = $payrolls->late;
-                $absent = $payrolls->absences;
-                $late_perpay = $hourly / 60;
-                $late_overall = $late_perpay * $late;
-                $absent_overall = $hourly * 8 * $absent;
-                $sss = round($monthly * 0.011);
-                $hdmf = round($monthly * 0.002);
-                $philhealth = round($monthly * 0.0275);
-                //Net Pay
-                $total_deductions = $sss + $hdmf + $philhealth + $late_overall + $absent_overall;
-                $net_pay = $gross_income - $total_deductions;
-            @endphp
-
             <div class="card-body">
                 <label><h3>Earnings</h3></label>
                 <h4 class="card-title mt-2 mb-5">Monthly Pay: ₱{{ number_format($monthly) }}</h4>

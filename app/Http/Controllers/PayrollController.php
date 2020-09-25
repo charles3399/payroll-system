@@ -124,11 +124,42 @@ class PayrollController extends Controller
         ->where('payrolls.employees_id', '=', $payroll->employees_id)
         ->get();
 
+        //Earnings
+        $hourly = $basic_pay->pluck('basic_pay')->first();
+        $monthly = $hourly * 8 * $payroll->days_work;
+        $overtime = (($hourly * 0.5) + $hourly ) * $payroll->overtime_hrs;
+        $gross_income = $monthly + $overtime;
+        
+        //Deductions
+        $per_day = $hourly * 8;
+        $late = $payroll->late;
+        $absent = $payroll->absences;
+        $late_perpay = $hourly / 60;
+        $late_overall = $late_perpay * $late;
+        $absent_overall = $hourly * 8 * $absent;
+        $sss = round($monthly * 0.011);
+        $hdmf = round($monthly * 0.002);
+        $philhealth = round($monthly * 0.0275);
+
+        //Net Pay
+        $total_deductions = $sss + $hdmf + $philhealth + $late_overall + $absent_overall;
+        $net_pay = $gross_income - $total_deductions;
+
         return view('payrolls.show')
         ->with('payrolls', $payroll)
         ->with('basic_pay', $basic_pay)
         ->with('position_name', $position_name)
-        ->with('employees', $employee);
+        ->with('employees', $employee)
+        ->with('monthly', $monthly)
+        ->with('overtime', $overtime)
+        ->with('gross_income', $gross_income)
+        ->with('sss', $sss)
+        ->with('hdmf', $hdmf)
+        ->with('philhealth', $philhealth)
+        ->with('late_overall', $late_overall)
+        ->with('absent_overall', $absent_overall)
+        ->with('total_deductions', $total_deductions)
+        ->with('net_pay', $net_pay);
     }
     
     /**
