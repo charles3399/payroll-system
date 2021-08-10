@@ -16,9 +16,9 @@
                 <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th><center>Position name</center></th>
-                            <th><center>Basic pay</center></th>
-                            <th><center>Actions</center></th>
+                            <th>Position name</th>
+                            <th>Basic pay</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                         <tbody>

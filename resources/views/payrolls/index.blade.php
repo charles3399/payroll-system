@@ -17,11 +17,11 @@
                 <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th><center>Payroll ID</center></th>
-                            <th><center>Employee Name</center></th>
-                            <th><center>Payroll Created</center></th>
-                            <th><center>Payroll Updated</center></th>
-                            <th><center>Action</center></th>
+                            <th>Payroll ID</th>
+                            <th>Employee Name</th>
+                            <th>Payroll Created</th>
+                            <th>Payroll Updated</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                         <tbody>
