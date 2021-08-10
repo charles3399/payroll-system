@@ -17,14 +17,14 @@
                 <table class="table table-bordered table-striped" id="myTable">
                     <thead>
                         <tr>
-                            <th><center>First Name</center></th>
-                            <th><center>Last Name</center></th>
-                            <th><center>Gender</center></th>
-                            <th><center>Address</center></th>
-                            <th><center>Position</center></th>
-                            <th><center>Created</center></th>
-                            <th><center>Updated</center></th>
-                            <th><center>Action</center></th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Position</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                         <tbody>
