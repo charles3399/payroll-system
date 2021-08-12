@@ -10928,3 +10928,9 @@ a.text-dark:focus {
   }
 }
 
+/* Custom classes */
+
+.col.homepage-col {
+  margin: auto 0;
+}
+
