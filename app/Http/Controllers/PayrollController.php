@@ -128,7 +128,7 @@ class PayrollController extends Controller
         $hourly = $basic_pay->pluck('basic_pay')->first();
         $monthly = $hourly * 8 * $payroll->days_work;
         $overtime = (($hourly * 0.5) + $hourly ) * $payroll->overtime_hrs;
-        $gross_income = $monthly + $overtime;
+        $gross_income = $monthly + $overtime + $payroll->bonuses;
         
         //Deductions
         $per_day = $hourly * 8;
