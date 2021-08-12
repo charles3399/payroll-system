@@ -1,3 +1,11 @@
 .homepage-col {
-    margin: auto 0;
-  }
+  margin: auto 0;
+}
+
+.first-container {
+  padding-top: 50px;
+}
+
+#dashboard {
+  margin-left: 0 !important;
+}

@@ -18,14 +18,14 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/home') }}" style="color:black;font-size:20px;" class="ml-5 navbar-brand"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
+                        <a href="{{ url('/home') }}" style="color:black;font-size:20px;" class="ml-5 navbar-brand" id="dashboard">Dashboard</a>
                         <ul class="navbar-nav mr-auto"></ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
@@ -67,7 +67,7 @@
                 @endif
             </div>
         </nav>
-        <div class="container mt-5">
+        <div class="container mt-5 first-container">
             <div class="row">
                 <div class="col homepage-col">
                     <h4>What is E-Payroll?</h4>
