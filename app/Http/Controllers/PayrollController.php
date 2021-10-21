@@ -39,7 +39,18 @@ class PayrollController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function($data){
 
-                return '<a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary">Edit<a/>';
+                return '
+                    
+                    <div class="d-flex justify-content-between"><a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+
+                    <form action="'.route('payrolls.destroy', $data->id).'" method="post">
+                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                    </form></div>
+                    
+                    ';
+
             })
             ->rawColumns(['action','employees_id','id'])
             ->editColumn('created_at', function(Payrolls $payroll){
@@ -49,10 +60,20 @@ class PayrollController extends Controller
                 return date_format($payroll->updated_at, 'Y/m/d h:i a');
             })
             ->editColumn('employees_id', function(Payrolls $payroll){
-                return $payroll->employees->pluck('lname')->first().', '.$payroll->employees->pluck('fname')->first();
+                if($payroll->employees->count() > 0){
+                    return $payroll->employees->pluck('lname')->first().', '.$payroll->employees->pluck('fname')->first();
+                }
+                else{
+                    return '<i>Employee does not exist anymore</i>';
+                }
             })
             ->editColumn('id', function(Payrolls $payroll){
-                return '<a href="'.route('payrolls.show', $payroll->id).'">'.($payroll->id).'</a>'; 
+                if($payroll->employees->count() > 0){
+                    return '<a href="'.route('payrolls.show', $payroll->id).'">'.($payroll->id).'</a>';
+                }
+                else{
+                    return '';
+                }
             })
             ->make(true);
         }
@@ -196,6 +217,15 @@ class PayrollController extends Controller
         $payroll->employees()->sync($request->employees_id);
 
         session()->flash('success', 'Payroll updated successfully!');
+
+        return redirect('payrolls');
+    }
+
+    public function destroy(Payrolls $payroll)
+    {
+        $payroll->delete();
+
+        session()->flash('delete', 'Payroll has been deleted!');
 
         return redirect('payrolls');
     }

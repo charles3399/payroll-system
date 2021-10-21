@@ -6,7 +6,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h3>Payroll List</h3>
+                <h3 class="mt-2 mb-2">Payroll List</h3>
                 <div>
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
                 <a class="btn btn-success mr-1" href="{{ route('payrolls.create') }}" role="button"><span><i class="fas fa-file-invoice-dollar"></i> Create New Payroll</span></a>
