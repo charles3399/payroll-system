@@ -10,6 +10,11 @@
                 <a class="btn btn-primary" href="{{ route('positions.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to Positions List</span></a>
             </div>
             <div class="card-body">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning my-2">
+                        <strong>{{ $error }}</strong>
+                    </div>
+                @endforeach
                 <form action="{{ route('positions.update', $positions->id) }}"  method="post">
                     @csrf
                     @method('PATCH')

@@ -10,6 +10,11 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
             </div>
             <div class="card-body">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning my-2">
+                        <strong>{{ $error }}</strong>
+                    </div>
+                @endforeach
                 <form action="{{ route('employees.store') }}" method="post">
                     @csrf
                     @method('POST')

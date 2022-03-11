@@ -10,21 +10,11 @@
                 <a class="btn btn-primary" href="{{ route('payrolls.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to Payroll List</span></a>
             </div>
             <div class="card-body">
-
-                @if ($errors->any())
-                    <div class="container">
-                        <div class="alert alert-danger">
-                            <ul class="list-group">
-                                @foreach ($errors->all() as $error)
-                                    <li class="list-group-item text-danger">
-                                        {{$error}}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-warning my-2">
+                        <strong>{{ $error }}</strong>
                     </div>
-                @endif
-
+                @endforeach
                 <form action="{{ route('payrolls.update', $payrolls->id) }}"  method="post">
                     @csrf
                     @method('PATCH')

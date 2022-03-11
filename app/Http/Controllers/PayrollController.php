@@ -64,7 +64,8 @@ class PayrollController extends Controller
                     return $payroll->employees->pluck('lname')->first().', '.$payroll->employees->pluck('fname')->first();
                 }
                 else{
-                    return '<i>Employee does not exist anymore</i>';
+                    $payroll->delete();
+                    return redirect()->back();
                 }
             })
             ->editColumn('id', function(Payrolls $payroll){
