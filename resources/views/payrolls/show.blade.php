@@ -43,7 +43,7 @@
                     <h5>Basic Pay: </h5>
                 </label>
                 <span style="font-size: 20px">
-                    ₱{{ number_format($basic_pay->pluck('basic_pay')->first()) }}
+                    ₱{{ number_format($basic_pay->pluck('basic_pay')->first()) }} (Hourly)
                 </span><br>
 
                 <label>
@@ -78,10 +78,10 @@
                     <h5>Bonuses: </h5>
                 </label>
                 <span style="font-size: 20px">
-                    @if ($payrolls->bonuses == 0)
+                    @if ($bonus == 0 || $bonus == null)
                         No bonus..
                     @else
-                        {{ $payrolls->bonuses }}
+                        {{ $bonus }}
                     @endif
                 </span><br>
             </div>
@@ -99,6 +99,7 @@
                         <tr>
                             <th>Monthly Pay</th>
                             <th>Overtime Pay</th>
+                            <th>Bonus</th>
                             <th>Gross Income</th>
                         </tr>
                     </thead>
@@ -106,6 +107,7 @@
                         <tr>
                             <td>₱{{ number_format($monthly) }}</td>
                             <td>₱{{ number_format($overtime) }}</td>
+                            <td>₱{{ number_format($bonus) }}</td>
                             <td>₱{{ number_format($gross_income) }}</td>
                         </tr>
                     </tbody>

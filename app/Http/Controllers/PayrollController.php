@@ -148,20 +148,21 @@ class PayrollController extends Controller
 
         //Earnings
         $hourly = $basic_pay->pluck('basic_pay')->first();
-        $monthly = $hourly * 8 * $payroll->days_work;
+        $per_day = $hourly * 8;
+        $monthly = $per_day * $payroll->days_work;
         $overtime = (($hourly * 0.5) + $hourly ) * $payroll->overtime_hrs;
-        $gross_income = $monthly + $overtime + $payroll->bonuses;
+        $bonus = $payroll->bonuses;
+        $gross_income = $monthly + $overtime + $bonus;
         
         //Deductions
-        $per_day = $hourly * 8;
         $late = $payroll->late;
         $absent = $payroll->absences;
         $late_perpay = $hourly / 60;
         $late_overall = $late_perpay * $late;
         $absent_overall = $hourly * 8 * $absent;
-        $sss = round($monthly * 0.011);
-        $hdmf = round($monthly * 0.002);
-        $philhealth = round($monthly * 0.0275);
+        $sss = round($monthly * 0.13);
+        $hdmf = round($monthly * 0.02);
+        $philhealth = round($monthly * 0.03);
 
         //Net Pay
         $total_deductions = $sss + $hdmf + $philhealth + $late_overall + $absent_overall;
@@ -174,6 +175,7 @@ class PayrollController extends Controller
         ->with('employees', $employee)
         ->with('monthly', $monthly)
         ->with('overtime', $overtime)
+        ->with('bonus', $bonus)
         ->with('gross_income', $gross_income)
         ->with('sss', $sss)
         ->with('hdmf', $hdmf)
