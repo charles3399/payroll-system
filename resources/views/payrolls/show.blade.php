@@ -21,63 +21,63 @@
             </div>
             <div class="card-body">
                 <label>
-                    <h4>ID: </h4>
+                    <h5>ID: </h5>
                 </label>
-                <span style="font-size: 25px">{{ $payrolls->id }}</span><br>
+                <span style="font-size: 20px">{{ $payrolls->id }}</span><br>
 
                 <label>
-                    <h4>Employee name: </h4>
+                    <h5>Employee name: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $payrolls->employees->pluck('lname')->first() }}, {{ $payrolls->employees->pluck('fname')->first() }}
                 </span><br>
 
                 <label>
-                    <h4>Position: </h4>
+                    <h5>Position: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $position_name->pluck('name')->first() }}
                 </span><br>
 
                 <label>
-                    <h4>Basic Pay: </h4>
+                    <h5>Basic Pay: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     ₱{{ number_format($basic_pay->pluck('basic_pay')->first()) }}
                 </span><br>
 
                 <label>
-                    <h4>Days Worked: </h4>
+                    <h5>Days Worked: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $payrolls->days_work }}
                 </span><br>
 
                 <label>
-                    <h4>Overtime (hours): </h4>
+                    <h5>Overtime (hours): </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $payrolls->overtime_hrs }}
                 </span><br>
 
                 <label>
-                    <h4>Lates (minutes): </h4>
+                    <h5>Lates (minutes): </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $payrolls->late }}
                 </span><br>
 
                 <label>
-                    <h4>Absences: </h4>
+                    <h5>Absences: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     {{ $payrolls->absences }}
                 </span><br>
 
                 <label>
-                    <h4>Bonuses: </h4>
+                    <h5>Bonuses: </h5>
                 </label>
-                <span style="font-size: 25px">
+                <span style="font-size: 20px">
                     @if ($payrolls->bonuses == 0)
                         No bonus..
                     @else
@@ -94,21 +94,60 @@
             </div>
 
             <div class="card-body">
-                <label><h3>Earnings</h3></label>
-                <h4 class="card-title mt-2 mb-5">Monthly Pay: ₱{{ number_format($monthly) }}</h4>
-                <h4 class="card-title mt-2 mb-5">Overtime Pay: ₱{{ number_format($overtime) }}</h4>
-                <h4 class="card-title mt-2 mb-5">Gross Income: ₱{{ number_format($gross_income) }}</h4>
-
-                <label><h3>Deductions with monthly contributions</h3></label>
-                <h4 class="card-title mt-2 mb-5">SSS (Social Security System): ₱{{ number_format($sss) }}</h4>
-                <h4 class="card-title mt-2 mb-5">HDMF (Home Development Mutual Fund): ₱{{ number_format($hdmf) }}</h4>
-                <h4 class="card-title mt-2 mb-5">PhilHealth: ₱{{ number_format($philhealth) }}</h4>
-                <h4 class="card-title mt-2 mb-5">Lates: ₱{{ number_format($late_overall) }}</h4>
-                <h4 class="card-title mt-2 mb-5">Absences: ₱{{ number_format($absent_overall) }}</h4>
-                <h4 class="card-title mt-2 mb-5">Total Deduction: ₱{{ number_format($total_deductions) }}</h4>
-
-                <label><h3>Overall Net Pay (Monthly Gross Income - Total deduction)</h3></label>
-                <h4 class="card-title mt-2 mb-5">Total Pay for {{ $payrolls->employees->pluck('fname')->first() }}: <strong>₱{{ number_format($net_pay) }}</strong></h4>
+                <table class="table table-striped table-bordered table-dark text-center mb-3">
+                    <thead>
+                        <tr>
+                            <th>Monthly Pay</th>
+                            <th>Overtime Pay</th>
+                            <th>Gross Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>₱{{ number_format($monthly) }}</td>
+                            <td>₱{{ number_format($overtime) }}</td>
+                            <td>₱{{ number_format($gross_income) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped table-bordered table-dark text-center mb-3">
+                    <thead>
+                        <tr>
+                            <th>SSS (Social Security System)</th>
+                            <th>HDMF (Home Development Mutual Fund)</th>
+                            <th>PhilHealth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>₱{{ number_format($sss) }}</td>
+                            <td>₱{{ number_format($hdmf) }}</td>
+                            <td>₱{{ number_format($philhealth) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped table-bordered table-dark text-center mb-3">
+                    <thead>
+                        <tr>
+                            <th>Lates</th>
+                            <th>Absences</th>
+                            <th>Total deduction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>₱{{ number_format($late_overall) }}</td>
+                            <td>₱{{ number_format($absent_overall) }}</td>
+                            <td>₱{{ number_format($total_deductions) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card border-dark">
+                  <div class="card-body">
+                    <h5 class="card-title">Overall Net Pay (Monthly Gross Income - Total deduction)</h5>
+                    <h4 class="card-text">Total Pay for {{ $payrolls->employees->pluck('fname')->first() }}: <strong class="font-weight-bold">₱{{ number_format($net_pay) }}</strong></h4>
+                  </div>
+                </div>
             </div>
 
         </div>
