@@ -160,9 +160,9 @@ class PayrollController extends Controller
         $late_perpay = $hourly / 60;
         $late_overall = $late_perpay * $late;
         $absent_overall = $hourly * 8 * $absent;
-        $sss = round($monthly * 0.13);
+        $sss = round($monthly * 0.0447);
         $hdmf = round($monthly * 0.02);
-        $philhealth = round($monthly * 0.03);
+        $philhealth = round($monthly * 0.04);
 
         //Net Pay
         $total_deductions = $sss + $hdmf + $philhealth + $late_overall + $absent_overall;
