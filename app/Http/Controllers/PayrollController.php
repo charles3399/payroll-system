@@ -81,7 +81,6 @@ class PayrollController extends Controller
 
         return view('payrolls.index')
         ->with('payrolls', Payrolls::all());
-        //->with('employees', Employees::all());
     }
 
     /**
@@ -103,7 +102,7 @@ class PayrollController extends Controller
      */
     public function store(CreatePayrollsRequest $request)
     {
-       $payroll = Payrolls::create([
+        $payroll = Payrolls::create([
             'days_work' => $request->days_work,
             'overtime_hrs' => $request->overtime_hrs,
             'late' => $request->late,
@@ -127,11 +126,6 @@ class PayrollController extends Controller
      */
     public function show(Employees $employee, Payrolls $payroll)
     {
-        // select payrolls.employees_id, employees.lname, positions.name, positions.basic_pay
-        // from payrolls
-        // inner join employees on employees.eid = payrolls.employees_id
-        // inner join positions on positions.pid = employees.positions_id;
-
         $basic_pay = DB::table('payrolls')
         ->select('positions.basic_pay')
         ->join('employees', 'employees.id', '=', 'payrolls.employees_id')
