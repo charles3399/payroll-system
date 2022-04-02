@@ -38,19 +38,17 @@ class PayrollController extends Controller
             return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function($data){
-
                 return '
-                    
-                    <div class="d-flex justify-content-between"><a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+                    <div class="d-flex justify-content-center">
+                        <a href="'.route('payrolls.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
-                    <form action="'.route('payrolls.destroy', $data->id).'" method="post">
-                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                    </form></div>
-                    
-                    ';
-
+                        <form action="'.route('payrolls.destroy', $data->id).'" method="post">
+                            <input type="hidden" name="_token" value="'.(csrf_token()).'">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                ';
             })
             ->rawColumns(['action','employees_id','id'])
             ->editColumn('created_at', function(Payrolls $payroll){
@@ -90,8 +88,15 @@ class PayrollController extends Controller
      */
     public function create()
     {
-        return view('payrolls.create')
-        ->with('employees', Employees::all());
+        $employeeExists = Employees::where('id', '>', 0)->exists();
+
+        if($employeeExists) {
+            return view('payrolls.create')
+            ->with('employees', Employees::all());
+        }
+        else {
+            return redirect()->back()->with('error', 'No employees exist in our record, please create one before creating a payroll');
+        }
     }
 
     /**

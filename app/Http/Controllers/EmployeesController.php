@@ -39,19 +39,17 @@ class EmployeesController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-
                     return '
-                    
-                    <div class="d-flex justify-content-between"><a href="'.route('employees.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+                        <div class="d-flex justify-content-center">
+                            <a href="'.route('employees.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
-                    <form action="'.route('employees.destroy', $data->id).'" method="post">
-                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                    </form></div>
-                    
+                            <form action="'.route('employees.destroy', $data->id).'" method="post">
+                                <input type="hidden" name="_token" value="'.(csrf_token()).'">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                            </form>
+                        </div>
                     ';
-
                 })
                 ->rawColumns(['action','fname'])
                 ->editColumn('created_at', function(Employees $employee){
@@ -82,8 +80,15 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        return view('employees.create')
-        ->with('positions', Positions::all());
+        $positionExists = Positions::where('id', '>', 0)->exists();
+
+        if($positionExists) {
+            return view('employees.create')
+            ->with('positions', Positions::all());
+        }
+        else {
+            return redirect()->back()->with('error', 'No position exists in our record, please create at least one position before proceeding to create an employee');
+        }
     }
 
     /**

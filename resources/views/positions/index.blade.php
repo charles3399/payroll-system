@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped" id="myTable">
+                <table class="table table-bordered table-striped text-center" id="myTable">
                     <thead>
                         <tr>
                             <th>Position name</th>

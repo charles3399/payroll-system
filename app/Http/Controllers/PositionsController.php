@@ -33,19 +33,16 @@ class PositionsController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-
                     return '
-                    
-                    <div class="d-flex justify-content-center"><a href="'.route('positions.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
-
-                    <form action="'.route('positions.destroy', $data->id).'" method="post">
-                        <input type="hidden" name="_token" value="'.(csrf_token()).'">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                    </form></div>
-                    
+                        <div class="d-flex justify-content-center">
+                            <a href="'.route('positions.edit', $data->id).'" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+                            <form action="'.route('positions.destroy', $data->id).'" method="post">
+                                <input type="hidden" name="_token" value="'.(csrf_token()).'">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
                     ';
-                    
                 })
                 ->rawColumns(['action','name'])
                 ->editColumn('name', function(Positions $position){

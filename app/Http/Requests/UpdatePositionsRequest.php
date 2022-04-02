@@ -24,8 +24,8 @@ class UpdatePositionsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'basic_pay' => 'required'
+            'name' => 'required|unique:positions,name',
+            'basic_pay' => 'required|max:6|min:3'
         ];
     }
 }

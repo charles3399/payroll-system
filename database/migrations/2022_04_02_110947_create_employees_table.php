@@ -18,8 +18,8 @@ class CreateEmployeesTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('gender');
+            $table->foreignId('positions_id')->constrained();
             $table->text('address');
-            $table->integer('positions_id');
             $table->timestamps();
         });
     }

@@ -20,12 +20,12 @@
                     @method('POST')
                     <div class="form-group">
                       <label>Position Name</label>
-                      <input type="text" name="name" class="form-control">
+                      <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                     </div>
                     
                     <div class="form-group">
                         <label>Basic pay (per hour)</label>
-                        <input type="number" name="basic_pay" class="form-control">
+                        <input type="number" name="basic_pay" class="form-control" value="{{ old('basic_pay') }}">
                     </div>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
