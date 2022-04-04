@@ -81,7 +81,7 @@ class PositionsController extends Controller
             'basic_pay' => $request->basic_pay,
         ]);
 
-        session()->flash('success', 'Position created successfully!');
+        session()->flash('success', "The position: $request->name created successfully!");
 
         return redirect('positions');
     }
@@ -124,7 +124,7 @@ class PositionsController extends Controller
             'basic_pay' => $request->basic_pay,
         ]);
 
-        session()->flash('success', 'Position updated successfully!');
+        session()->flash('success', "The position: $request->name updated successfully!");
 
         return redirect('positions');
     }

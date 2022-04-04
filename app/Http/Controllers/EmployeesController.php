@@ -107,7 +107,7 @@ class EmployeesController extends Controller
             'positions_id' => $request->positions_id
         ]);
 
-        session()->flash('success', 'Employee created successfully!');
+        session()->flash('success', "Employee: $request->lname, $request->fname created successfully!");
 
         return redirect('employees');
     }
@@ -156,7 +156,7 @@ class EmployeesController extends Controller
             'positions_id' => $request->positions_id
         ]);
 
-        session()->flash('success', 'Employee updated successfully!');
+        session()->flash('success', "Employee: $request->lname, $request->fname updated successfully!");
 
         return redirect('employees');
     }
