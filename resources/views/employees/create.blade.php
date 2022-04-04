@@ -10,33 +10,48 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-warning my-2">
-                        <strong>{{ $error }}</strong>
-                    </div>
-                @endforeach
                 <form action="{{ route('employees.store') }}" method="post">
                     @csrf
                     @method('POST')
 
                     <div class="form-group">
                       <label>First Name</label>
-                      <input type="text" name="fname" class="form-control" value="{{ old('fname') }}">
+                      <input type="text" name="fname" class="form-control @error('fname') is-invalid @enderror" value="{{ old('fname') }}">
+                      @error('fname')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" name="lname" class="form-control" value="{{ old('lname') }}">
+                        <input type="text" name="lname" class="form-control @error('lname') is-invalid @enderror" value="{{ old('lname') }}">
+                        @error('lname')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Gender</label>
-                        <input type="text" name="gender" class="form-control" value="{{ old('gender') }}">
+                        <input type="text" name="gender" class="form-control @error('gender') is-invalid @enderror" value="{{ old('gender') }}">
+                        @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" value="{{ old('address') }}">
+                        <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}">
+                        @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">

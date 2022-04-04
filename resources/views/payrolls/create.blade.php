@@ -10,11 +10,6 @@
                 <a class="btn btn-primary" href="{{ route('payrolls.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to Payroll List</span></a>
             </div>
             <div class="card-body">
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-warning my-2">
-                        <strong>{{ $error }}</strong>
-                    </div>
-                @endforeach
                 <form action="{{ route('payrolls.store') }}" method="post">
                     @csrf
                     @method('POST')
@@ -32,27 +27,52 @@
 
                     <div class="form-group">
                         <label>Days Worked</label>
-                        <input type="number" name="days_work" class="form-control" value="{{ old('days_work') }}">
+                        <input type="number" name="days_work" class="form-control @error('days_work') is-invalid @enderror" value="{{ old('days_work') }}">
+                        @error('days_work')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Overtime (hrs) - Leave 0 if none</label>
-                        <input type="number" name="overtime_hrs" class="form-control" value="{{ old('overtime_hrs') }}">
+                        <input type="number" name="overtime_hrs" class="form-control  @error('overtime_hrs') is-invalid @enderror" value="{{ old('overtime_hrs') }}">
+                        @error('overtime_hrs')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Late (mins) - Leave 0 if none</label>
-                        <input type="number" name="late" class="form-control" value="{{ old('late') }}">
+                        <input type="number" name="late" class="form-control  @error('late') is-invalid @enderror" value="{{ old('late') }}">
+                        @error('late')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Days Absent - Leave 0 if none</label>
-                        <input type="number" name="absences" class="form-control" value="{{ old('absences') }}">
+                        <input type="number" name="absences" class="form-control  @error('absences') is-invalid @enderror" value="{{ old('absences') }}">
+                        @error('absences')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Bonuses - Leave blank if none</label>
-                        <input type="number" name="bonuses" class="form-control" value="{{ old('bonuses') }}">
+                        <input type="number" name="bonuses" class="form-control @error('bonuses') is-invalid @enderror" value="{{ old('bonuses') }}">
+                        @error('bonuses')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <button class="btn btn-lg btn-primary" type="submit">Create Payroll</button>

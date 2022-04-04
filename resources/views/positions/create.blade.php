@@ -10,22 +10,27 @@
                 <a class="btn btn-primary" href="{{ route('home') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to dashboard</span></a>
             </div>
             <div class="card-body">
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-warning my-2">
-                        <strong>{{ $error }}</strong>
-                    </div>
-                @endforeach
                 <form action="{{ route('positions.store') }}" method="post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
                       <label>Position Name</label>
-                      <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                      @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
                     </div>
                     
                     <div class="form-group">
                         <label>Basic pay (per hour)</label>
-                        <input type="number" name="basic_pay" class="form-control" value="{{ old('basic_pay') }}">
+                        <input type="number" name="basic_pay" class="form-control @error('basic_pay') is-invalid @enderror" value="{{ old('basic_pay') }}">
+                        @error('basic_pay')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <button class="btn btn-primary" type="submit">Submit</button>
