@@ -10,11 +10,6 @@
                 <a class="btn btn-primary" href="{{ route('payrolls.index') }}" role="button"><span><i class="fas fa-long-arrow-alt-left"></i> Back to Payroll List</span></a>
             </div>
             <div class="card-body">
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-warning my-2">
-                        <strong>{{ $error }}</strong>
-                    </div>
-                @endforeach
                 <form action="{{ route('payrolls.update', $payrolls->id) }}"  method="post">
                     @csrf
                     @method('PATCH')
@@ -40,27 +35,52 @@
 
                     <div class="form-group">
                         <label>Days Worked</label>
-                        <input type="number" name="days_work" class="form-control" value="{{ $payrolls->days_work }}{{ old('days_work') }}">
+                        <input type="number" name="days_work" class="form-control @error('days_work') is-invalid @enderror" value="{{ $payrolls->days_work }}{{ old('days_work') }}">
+                        @error('days_work')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Overtime Hours</label>
-                        <input type="number" name="overtime_hrs" class="form-control" value="{{ $payrolls->overtime_hrs }}{{ old('overtime_hrs') }}">
+                        <input type="number" name="overtime_hrs" class="form-control @error('overtime_hrs') is-invalid @enderror" value="{{ $payrolls->overtime_hrs }}{{ old('overtime_hrs') }}">
+                        @error('overtime_hrs')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Late</label>
-                        <input type="number" name="late" class="form-control" value="{{ $payrolls->late }}{{ old('late') }}">
+                        <input type="number" name="late" class="form-control @error('late') is-invalid @enderror" value="{{ $payrolls->late }}{{ old('late') }}">
+                        @error('late')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Absences</label>
-                        <input type="number" name="absences" class="form-control" value="{{ $payrolls->absences }}{{ old('absences') }}">
+                        <input type="number" name="absences" class="form-control @error('absences') is-invalid @enderror" value="{{ $payrolls->absences }}{{ old('absences') }}">
+                        @error('absences')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Bonuses - Leave blank if none</label>
-                        <input type="number" name="bonuses" class="form-control" value="{{ $payrolls->bonuses }}{{ old('bonuses') }}">
+                        <input type="number" name="bonuses" class="form-control @error('bonuses') is-invalid @enderror" value="{{ $payrolls->bonuses }}{{ old('bonuses') }}">
+                        @error('bonuses')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <button class="btn btn-outline-success btn-sm" type="submit">Update Payroll</button>
